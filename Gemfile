@@ -49,6 +49,8 @@ gem 'bootstrap-sass-extras'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
 
+gem 'pg'
+
 group :development do
   gem 'better_errors'
 end

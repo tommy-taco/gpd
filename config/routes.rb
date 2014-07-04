@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'statics/index'
+	match '/dmca',    to: 'statics#dmca',    via: 'get'
+	match '/about',   to: 'statics#about',   via: 'get'
+	match '/contact', to: 'statics#contact', via: 'get'
 
   resources :goals
 

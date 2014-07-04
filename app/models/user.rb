@@ -17,4 +17,5 @@ class User < ActiveRecord::Base
 
 
   devise authentication_keys: [:login]
+  validates_presence_of :username, :national_team
 end
