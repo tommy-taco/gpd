@@ -1,29 +1,33 @@
-<h1>Listing goals</h1>
-
-<table>
+<%- model_class = Goal -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Goal %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Player</th>
-      <th>Minute</th>
-      <th>Team</th>
-      <th>Opponent</th>
-      <th>Date</th>
-      <th>Penalty</th>
-      <th>Own goal</th>
-      <th>Stadium</th>
-      <th>Home</th>
-      <th>Competition</th>
-      <th>Stage</th>
-      <th>Assist</th>
-      <th>Video</th>
-      <th>Gfy</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:player) %></th>
+      <th><%= model_class.human_attribute_name(:minute) %></th>
+      <th><%= model_class.human_attribute_name(:team) %></th>
+      <th><%= model_class.human_attribute_name(:opponent) %></th>
+      <th><%= model_class.human_attribute_name(:date) %></th>
+      <th><%= model_class.human_attribute_name(:penalty) %></th>
+      <th><%= model_class.human_attribute_name(:own_goal) %></th>
+      <th><%= model_class.human_attribute_name(:stadium) %></th>
+      <th><%= model_class.human_attribute_name(:home) %></th>
+      <th><%= model_class.human_attribute_name(:competition) %></th>
+      <th><%= model_class.human_attribute_name(:stage) %></th>
+      <th><%= model_class.human_attribute_name(:assist) %></th>
+      <th><%= model_class.human_attribute_name(:video) %></th>
+      <th><%= model_class.human_attribute_name(:gfy) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @goals.each do |goal| %>
       <tr>
+        <td><%= goal.id %></td>
         <td><%= goal.player %></td>
         <td><%= goal.minute %></td>
         <td><%= goal.team %></td>
@@ -38,14 +42,21 @@
         <td><%= goal.assist %></td>
         <td><%= goal.video %></td>
         <td><%= goal.gfy %></td>
-        <td><%= link_to 'Show', goal %></td>
-        <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-        <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l goal.created_at, format: :long %></td>
+        <td>
+          <%= link_to goal_path(goal), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to goal_path(goal), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Goal', new_goal_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_goal_path,
+            :class => 'btn btn-primary' %>

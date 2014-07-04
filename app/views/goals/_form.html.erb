@@ -1,73 +1,94 @@
-<%= form_for(@goal) do |f| %>
-  <% if @goal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
-
-      <ul>
-      <% @goal.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @goal, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :player, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :player, :class => 'text-field form-control' %>
     </div>
-  <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.label :minute, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :minute, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :team, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :team, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :opponent, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :opponent, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :date, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.date_select :date, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :penalty, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :penalty, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :own_goal, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :own_goal, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :stadium, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :stadium, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :home, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :home, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :competition, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :competition, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :stage, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :stage, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :assist, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :assist, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :video, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :video, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :gfy, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :gfy, :class => 'text-field form-control' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :player %><br>
-    <%= f.text_field :player %>
-  </div>
-  <div class="field">
-    <%= f.label :minute %><br>
-    <%= f.number_field :minute %>
-  </div>
-  <div class="field">
-    <%= f.label :team %><br>
-    <%= f.text_field :team %>
-  </div>
-  <div class="field">
-    <%= f.label :opponent %><br>
-    <%= f.text_field :opponent %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :penalty %><br>
-    <%= f.check_box :penalty %>
-  </div>
-  <div class="field">
-    <%= f.label :own_goal %><br>
-    <%= f.check_box :own_goal %>
-  </div>
-  <div class="field">
-    <%= f.label :stadium %><br>
-    <%= f.text_field :stadium %>
-  </div>
-  <div class="field">
-    <%= f.label :home %><br>
-    <%= f.check_box :home %>
-  </div>
-  <div class="field">
-    <%= f.label :competition %><br>
-    <%= f.text_field :competition %>
-  </div>
-  <div class="field">
-    <%= f.label :stage %><br>
-    <%= f.text_field :stage %>
-  </div>
-  <div class="field">
-    <%= f.label :assist %><br>
-    <%= f.text_field :assist %>
-  </div>
-  <div class="field">
-    <%= f.label :video %><br>
-    <%= f.text_field :video %>
-  </div>
-  <div class="field">
-    <%= f.label :gfy %><br>
-    <%= f.text_field :gfy %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  goals_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

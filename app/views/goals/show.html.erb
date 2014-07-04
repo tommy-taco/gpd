@@ -1,74 +1,50 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Goal -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Goal %></h1>
+</div>
 
-<p>
-  <strong>Player:</strong>
-  <%= @goal.player %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:player) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.player %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:minute) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.minute %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:team) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.team %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:opponent) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.opponent %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:date) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.date %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:penalty) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.penalty %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:own_goal) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.own_goal %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:stadium) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.stadium %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:home) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.home %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:competition) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.competition %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:stage) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.stage %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:assist) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.assist %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:video) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.video %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:gfy) %></dt>
+      <dd><pre class="prettyprint"><%= @goal.gfy %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Minute:</strong>
-  <%= @goal.minute %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              goals_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_goal_path(@goal), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              goal_path(@goal),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Team:</strong>
-  <%= @goal.team %>
-</p>
-
-<p>
-  <strong>Opponent:</strong>
-  <%= @goal.opponent %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @goal.date %>
-</p>
-
-<p>
-  <strong>Penalty:</strong>
-  <%= @goal.penalty %>
-</p>
-
-<p>
-  <strong>Own goal:</strong>
-  <%= @goal.own_goal %>
-</p>
-
-<p>
-  <strong>Stadium:</strong>
-  <%= @goal.stadium %>
-</p>
-
-<p>
-  <strong>Home:</strong>
-  <%= @goal.home %>
-</p>
-
-<p>
-  <strong>Competition:</strong>
-  <%= @goal.competition %>
-</p>
-
-<p>
-  <strong>Stage:</strong>
-  <%= @goal.stage %>
-</p>
-
-<p>
-  <strong>Assist:</strong>
-  <%= @goal.assist %>
-</p>
-
-<p>
-  <strong>Video:</strong>
-  <%= @goal.video %>
-</p>
-
-<p>
-  <strong>Gfy:</strong>
-  <%= @goal.gfy %>
-</p>
-
-<%= link_to 'Edit', edit_goal_path(@goal) %> |
-<%= link_to 'Back', goals_path %>
