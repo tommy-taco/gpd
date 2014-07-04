@@ -1,0 +1,73 @@
+<%= form_for(@goal) do |f| %>
+  <% if @goal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
+
+      <ul>
+      <% @goal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :player %><br>
+    <%= f.text_field :player %>
+  </div>
+  <div class="field">
+    <%= f.label :minute %><br>
+    <%= f.number_field :minute %>
+  </div>
+  <div class="field">
+    <%= f.label :team %><br>
+    <%= f.text_field :team %>
+  </div>
+  <div class="field">
+    <%= f.label :opponent %><br>
+    <%= f.text_field :opponent %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :penalty %><br>
+    <%= f.check_box :penalty %>
+  </div>
+  <div class="field">
+    <%= f.label :own_goal %><br>
+    <%= f.check_box :own_goal %>
+  </div>
+  <div class="field">
+    <%= f.label :stadium %><br>
+    <%= f.text_field :stadium %>
+  </div>
+  <div class="field">
+    <%= f.label :home %><br>
+    <%= f.check_box :home %>
+  </div>
+  <div class="field">
+    <%= f.label :competition %><br>
+    <%= f.text_field :competition %>
+  </div>
+  <div class="field">
+    <%= f.label :stage %><br>
+    <%= f.text_field :stage %>
+  </div>
+  <div class="field">
+    <%= f.label :assist %><br>
+    <%= f.text_field :assist %>
+  </div>
+  <div class="field">
+    <%= f.label :video %><br>
+    <%= f.text_field :video %>
+  </div>
+  <div class="field">
+    <%= f.label :gfy %><br>
+    <%= f.text_field :gfy %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

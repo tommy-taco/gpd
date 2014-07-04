@@ -1,0 +1,51 @@
+<h1>Listing goals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th>Minute</th>
+      <th>Team</th>
+      <th>Opponent</th>
+      <th>Date</th>
+      <th>Penalty</th>
+      <th>Own goal</th>
+      <th>Stadium</th>
+      <th>Home</th>
+      <th>Competition</th>
+      <th>Stage</th>
+      <th>Assist</th>
+      <th>Video</th>
+      <th>Gfy</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @goals.each do |goal| %>
+      <tr>
+        <td><%= goal.player %></td>
+        <td><%= goal.minute %></td>
+        <td><%= goal.team %></td>
+        <td><%= goal.opponent %></td>
+        <td><%= goal.date %></td>
+        <td><%= goal.penalty %></td>
+        <td><%= goal.own_goal %></td>
+        <td><%= goal.stadium %></td>
+        <td><%= goal.home %></td>
+        <td><%= goal.competition %></td>
+        <td><%= goal.stage %></td>
+        <td><%= goal.assist %></td>
+        <td><%= goal.video %></td>
+        <td><%= goal.gfy %></td>
+        <td><%= link_to 'Show', goal %></td>
+        <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
+        <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Goal', new_goal_path %>
