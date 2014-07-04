@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  player: MyString
+  minute: 1
+  team: MyString
+  opponent: MyString
+  date: 2014-07-04
+  penalty: false
+  own_goal: false
+  stadium: MyString
+  home: false
+  competition: MyString
+  stage: MyString
+  assist: MyString
+  video: MyString
+  gfy: MyString
+
+two:
+  player: MyString
+  minute: 1
+  team: MyString
+  opponent: MyString
+  date: 2014-07-04
+  penalty: false
+  own_goal: false
+  stadium: MyString
+  home: false
+  competition: MyString
+  stage: MyString
+  assist: MyString
+  video: MyString
+  gfy: MyString
