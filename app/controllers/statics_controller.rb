@@ -10,4 +10,7 @@ class StaticsController < ApplicationController
   
   def dmca
   end
+  
+  def upload
+  end
 end

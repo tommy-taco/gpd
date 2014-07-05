@@ -6,6 +6,12 @@ class GoalsController < ApplicationController
   def index
     @goals = Goal.all
   end
+  
+  #POST import
+  def import
+  	Goal.import(params[:file])
+  	redirect_to root_url, notice: "Goal imported."
+  end
 
   # GET /goals/1
   # GET /goals/1.json

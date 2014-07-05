@@ -2,8 +2,11 @@ Rails.application.routes.draw do
 	match '/dmca',    to: 'statics#dmca',    via: 'get'
 	match '/about',   to: 'statics#about',   via: 'get'
 	match '/contact', to: 'statics#contact', via: 'get'
+	match '/upload', to: 'statics#upload', via: 'get'
 
-  resources :goals
+	resources :goals do
+		collection { post :import }
+	end
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords"}, skip: [:sessions, :registrations]
   # The priority is based upon order of creation: first created -> highest priority.
