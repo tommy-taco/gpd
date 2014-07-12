@@ -20,6 +20,13 @@
       <%= f.email_field :email, class: "text-field form-control", html: {spellcheck: "false"} %>
     </div>
   </div>
+  
+  <div class="form-group">
+    <%= f.label :national_team, class: "control-label col-md-4" %>
+    <div class="col-md-8">
+      <%= f.collection_select :national_team, Country.order(:name), :id, :name, include_blank: true %>
+    </div>
+  </div>
     
   <div class="form-group">
     <%= f.label :password, class: "control-label col-md-4" %>
