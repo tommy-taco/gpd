@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Goalopedia</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <script type"text/javascript" src="http://test.gfycat.com/gfycat_test_may18.js"></script>
-  <%= csrf_meta_tags %>
-<meta name="viewport" content="width=device-width, initial-scale=1"/></head>
+  	<title>Goalopedia</title>
+  	<%= favicon_link_tag 'favicon.ico' %>
+  	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  	<script type"text/javascript" src="http://test.gfycat.com/gfycat_test_may18.js"></script>
+  	<%= csrf_meta_tags %>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
 <body>
 <%= render partial: "elements/navbar" %>
 <div class="container">

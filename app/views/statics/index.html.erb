@@ -1,7 +1,6 @@
 <div class="center hero-unit">
   <h1>Welcome to Goalopedia</h1>
 
-
 <ul class="goals">
   <% @goals.each do |goal| %>
   	<% gfyid = goal.gfy.to_s.gsub("http://gfycat.com/", "") %>
@@ -12,7 +11,7 @@
   <% end %>
 </ul>
 
-
+<%= will_paginate @goals, renderer: BootstrapPagination::Rails %>
 
 
 </div>

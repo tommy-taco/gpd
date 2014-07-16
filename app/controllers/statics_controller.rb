@@ -1,6 +1,6 @@
 class StaticsController < ApplicationController
   def index
-    @goals = Goal.all
+    @goals = Goal.paginate(page: params[:page])
   end
   
   def about
