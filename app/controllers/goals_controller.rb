@@ -16,6 +16,7 @@ class GoalsController < ApplicationController
   # GET /goals/1
   # GET /goals/1.json
   def show
+  	@gfyid = @goal.gfy.gsub("http://gfycat.com/", "")
   end
 
   # GET /goals/new

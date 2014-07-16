@@ -3,6 +3,12 @@
   <h1><%=t '.title', :default => Goal %></h1>
 </div>
 
+<div class="gfyShow">
+	<div class="gfyitem" data-title=false data-autoplay=false data-controls=false data-expand=false data-id="<%= @gfyid %>" %>"></div> 
+</div>
+
+
+
 <div class="fieldset">
   <dl>
       <dt class="label label-default"><%= model_class.human_attribute_name(:player) %></dt>

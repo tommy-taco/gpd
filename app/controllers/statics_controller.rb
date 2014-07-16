@@ -13,4 +13,7 @@ class StaticsController < ApplicationController
   
   def upload
   end
+  
+  def gtest
+  end
 end
