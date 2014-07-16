@@ -2,5 +2,17 @@
   <h1>Welcome to Goalopedia</h1>
 
 
-  <%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>
+<ul class="goals">
+  <% @goals.each do |goal| %>
+  	<% gfyid = goal.gfy.to_s.gsub("http://gfycat.com/", "") %>
+    <li>
+    	<%= goal.player %>
+    </li>
+    <div class="gfyitem" data-title=false data-autoplay=false data-controls=false data-expand=false data-id="<%= gfyid %>" %>"></div> 
+  <% end %>
+</ul>
+
+
+
+
 </div>

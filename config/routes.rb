@@ -76,6 +76,7 @@ Rails.application.routes.draw do
     post   "signup"  => "devise/registrations#create", as: :user_registration
     put    "signup"  => "devise/registrations#update", as: :update_user_registration
     get    "account" => "devise/registrations#edit",   as: :edit_user_registration
+    delete "signup" =>  "devise/registrations#destroy", as: :destroy_user_registration
   end
 
 end
