@@ -1,34 +1,16 @@
 <div class="center">
  
-<div class="jumbotron">
-  <div class="container">
-  <h1>Welcome to Goalopedia! Discover Awesome Goals and Add Your Favorites</h1>
-  </div>
+  <div class="jumbotron">
+    <h1>Welcome to Goalopedia! Discover Awesome Goals and Add Your Favorites</h1>
   </div>
 
-<script src="/assets/jquery.masonry.min.js"></script>
-
-<script>
-$(function () {
-  var $container = $('#masonry-container');
-    $container.imagesLoaded(function(){
-      $container.masonry({
-       itemSelector : '.box',
-       //columnWidth : 240
-    });
-  });
-});
-</script>
-
-
-
-	<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+	<div id="goals">
 		<%= render @goals %>
 	</div>
 
-		<div class="paginator">
-		<%= will_paginate @goals, renderer: BootstrapPagination::Rails %>
-		</div>
+	<div class="paginator">
+  	<%= will_paginate @goals, renderer: BootstrapPagination::Rails %>
+	</div>
 	</div>
 
 </div>
