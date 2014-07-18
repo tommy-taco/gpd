@@ -44,6 +44,9 @@ gem 'masonry-rails'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# heroku stuff
+gem 'rails_12factor'
+
 gem 'bundler'
 
 gem 'devise', github: 'plataformatec/devise'
