@@ -12,6 +12,8 @@
 *
 *= require_tree .
 *= require_self
+
+
 */
 @import "bootstrap_configuration";
 
@@ -20,6 +22,8 @@
 
 /*Site Colors
 */
+
+
 
 
 //->Prelang (ui_framework:twitter_bootstrap)
@@ -55,6 +59,16 @@
   color: #ffffff;
 }
 
+
+/*Home*/
+.jumbotron h1, .jumbotron .h1 {
+font-size: 2em;
+}
+
+.jumbotron {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 
 /* footer */
@@ -97,4 +111,87 @@ line-height: 1.428571429;
 color: #333332;
 background-color: white;
 }
+
+
+
+/*Goal Partial*/
+
+
+.gfySize {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 420px;
+}
+
+
+
+
+/*Masonry Things*/
+
+/**** Base styles ****/
+
+nav#page-nav {
+  display: block;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+#container {
+  padding: 5px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  clear: both;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.box {
+  float: left;
+  margin: 5px;
+  padding: 5px;
+  color: #ffffff;
+  background-color: $brand-primary;
+  font-size: 11px;
+  line-height: 1.4em;
+  float: left;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.box h2 {
+    font-size: 1.5em;
+    margin-top: 0px
+}
+
+.col1 { width: 80px; }
+.col2 { width: 180px; }
+.col3 { width: 280px; }
+.col4 { width: 380px; }
+.col5 { width: 430px; }
+
+
+/**** Clearfix ****/
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+/*pagination*/
+
+.paginator {
+  clear: both;
+
+}
+
+
+
+
+
+
+
+
 

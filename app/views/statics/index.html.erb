@@ -1,17 +1,34 @@
-<div class="center hero-unit">
-  <h1>Welcome to Goalopedia</h1>
+<div class="center">
+ 
+<div class="jumbotron">
+  <div class="container">
+  <h1>Welcome to Goalopedia! Discover Awesome Goals and Add Your Favorites</h1>
+  </div>
+  </div>
 
-<ul class="goals">
-  <% @goals.each do |goal| %>
-  	<% gfyid = goal.gfy.to_s.gsub("http://gfycat.com/", "") %>
-    <li>
-    	<%= goal.player %>
-    </li>
-    <div class="gfyitem" data-title=false data-autoplay=false data-controls=false data-expand=false data-id="<%= gfyid %>" %>"></div> 
-  <% end %>
-</ul>
+<script src="/assets/jquery.masonry.min.js"></script>
 
-<%= will_paginate @goals, renderer: BootstrapPagination::Rails %>
+<script>
+$(function () {
+  var $container = $('#masonry-container');
+    $container.imagesLoaded(function(){
+      $container.masonry({
+       itemSelector : '.box',
+       //columnWidth : 240
+    });
+  });
+});
+</script>
 
+
+
+	<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+		<%= render @goals %>
+	</div>
+
+		<div class="paginator">
+		<%= will_paginate @goals, renderer: BootstrapPagination::Rails %>
+		</div>
+	</div>
 
 </div>

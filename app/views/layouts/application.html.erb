@@ -10,15 +10,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
-<%= render partial: "elements/navbar" %>
-<div class="container">
-<%= bootstrap_flash %>
-
-
-<%= yield %>
-<%= render 'elements/footer' %>
-</div>
-
+	<%= render partial: "elements/navbar" %>
+	<div class="container-fluid">
+		<%= bootstrap_flash %>
+		<%= yield %>
+		<%= render 'elements/footer' %>
+	</div>
 
 </body>
 </html>

@@ -33,6 +33,9 @@ gem 'spring',        group: :development
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 
+# masonry layout
+gem 'masonry-rails'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
