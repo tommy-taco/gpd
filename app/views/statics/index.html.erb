@@ -4,8 +4,8 @@
     <h1>Welcome to Goalopedia! Discover Awesome Goals and Add Your Favorites</h1>
   </div>
 
-	<div id="goals">
-		<%= render @goals %>
+	<div id="goals" class="masonry clearfix">
+		<%= render @goals.order(:created_at).reverse_order %>
 	</div>
 
 	<div class="paginator">

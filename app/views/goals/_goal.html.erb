@@ -1,7 +1,12 @@
 <div class="box">
 	<% gfyid = goal.gfy.to_s.gsub("http://gfycat.com/", "") %>
-	<h2><%= goal.player %> (<%= goal.team %>) v. <%= goal.opponent %></h2>
+	<h2>
+		<%= link_to goal do %>
+			<%= goal.player %> (<%= goal.team %>) v. <%= goal.opponent %>
+		<% end %>
+	</h2>
 	<div class="gfySize">
-		<div class="gfyitem" data-title=false data-autoplay=false data-controls=false data-expand=false data-id="<%= gfyid %>"></div>
+				<div class="gfyitem" data-title=false data-autoplay=false data-controls=false data-expand=false data-id="<%= gfyid %>"></div>
+
 	</div>
 </div>

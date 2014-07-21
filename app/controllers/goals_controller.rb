@@ -5,6 +5,10 @@ class GoalsController < ApplicationController
   # GET /goals.json
   def index
     @goals = Goal.all
+    respond_to do |format|
+      format.html
+      format.csv { render text: @goals.to_csv }
+    end
   end
   
   #POST import
@@ -16,7 +20,9 @@ class GoalsController < ApplicationController
   # GET /goals/1
   # GET /goals/1.json
   def show
-  	@gfyid = @goal.gfy.gsub("http://gfycat.com/", "")
+  	if @goal.gfy != nil
+      @gfyid = @goal.gfy.gsub("http://gfycat.com/", "")
+    end
   end
 
   # GET /goals/new
