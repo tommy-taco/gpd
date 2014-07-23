@@ -32,7 +32,8 @@ gem 'spring',        group: :development
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 
-# masonry layout
+# heroku help
+gem 'rails_12factor', group: :production
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -44,7 +45,6 @@ gem 'will_paginate-bootstrap'
 # gem 'debugger', group: [:development, :test]
 
 # heroku stuff
-gem 'rails_12factor'
 
 gem 'bundler'
 
