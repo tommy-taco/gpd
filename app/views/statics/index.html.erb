@@ -5,7 +5,7 @@
   </div>
 
 	<div id="goals" class="masonry clearfix">
-		<%= render @goals.order(:created_at).reverse_order %>
+		<%= render @goals.order(:id).reverse_order %>
 	</div>
 
 	<div class="paginator">
