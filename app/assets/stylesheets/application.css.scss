@@ -66,6 +66,13 @@ font-size: 2em;
 }
 
 .jumbotron {
+  padding: 30px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: #42CA8A;
+  color: #FFF;
+  border-radius: 10px;
+  text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -178,7 +185,7 @@ body {
 
 .paginator {
   clear: both;
-
+  margin-top: 30px;
 }
 
 
@@ -193,10 +200,9 @@ body {
 
 }
 
-.gfyShow {
+.gfyShow .gfyVid {
   border: #DEDEDE 10px groove;
   border-bottom-color: transparent;
-
 
 }
 
