@@ -4,7 +4,8 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
+    @goals = Goal.search(params)
+    @query = params[:query].to_s
     respond_to do |format|
       format.html
       format.csv { render text: @goals.to_csv }
@@ -13,8 +14,12 @@ class GoalsController < ApplicationController
   
   #POST import
   def import
-  	Goal.import(params[:file])
-  	redirect_to root_url, notice: "Goal imported."
+    if params[:file].blank?
+      redirect_to :back, alert: "No File Uploaded"
+    else
+    	Goal.import(params[:file])
+    	redirect_to root_url, notice: "Import Worked!"
+    end
   end
 
   # GET /goals/1

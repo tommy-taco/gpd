@@ -1,6 +1,10 @@
 class StaticsController < ApplicationController
   def index
-    @goals = Goal.paginate(page: params[:page], :per_page => 24)
+    if params[:query].present?
+      @goals = Goal.search(params[:query])
+    else
+      @goals = Goal.paginate(page: params[:page], :per_page => 24)
+    end
   end
   
   def about

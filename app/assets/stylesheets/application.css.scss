@@ -59,6 +59,32 @@
   color: #ffffff;
 }
 
+.navbar-form .form-control {
+  display: inline-block;
+  width: 200px;
+  vertical-align: middle;
+}
+
+.navbar-brand {
+  float: left;
+  padding: 5px;
+  height: 70px;
+  margin-left: 3%;
+}
+
+.navbar {
+  border-radius: 0px;
+}
+
+.navbar-form {
+  padding-top: 8px;
+
+
+}
+
+.navbar-form.navbar-right:last-child {
+  margin-right: 0px;
+}
 
 /*Home*/
 .jumbotron h1, .jumbotron .h1 {
@@ -163,9 +189,10 @@ body {
   font-size: 11px;
   line-height: 1.4em;
   float: left;
+  text-align: center;
   -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 
 .box h2 {

@@ -41,6 +41,10 @@ gem 'rails_12factor', group: :production
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Tire for Elastic Search
+
+gem 'tire'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 

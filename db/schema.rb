@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712003324) do
+ActiveRecord::Schema.define(version: 20140724220236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20140712003324) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "goals", ["assist"], name: "index_goals_on_assist", using: :btree
+  add_index "goals", ["competition"], name: "index_goals_on_competition", using: :btree
+  add_index "goals", ["date"], name: "index_goals_on_date", using: :btree
+  add_index "goals", ["gfy"], name: "index_goals_on_gfy", using: :btree
+  add_index "goals", ["opponent"], name: "index_goals_on_opponent", using: :btree
+  add_index "goals", ["own_goal"], name: "index_goals_on_own_goal", using: :btree
+  add_index "goals", ["penalty"], name: "index_goals_on_penalty", using: :btree
+  add_index "goals", ["player"], name: "index_goals_on_player", using: :btree
+  add_index "goals", ["team"], name: "index_goals_on_team", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

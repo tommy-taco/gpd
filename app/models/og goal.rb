@@ -3,6 +3,42 @@ class Goal < ActiveRecord::Base
 	include Tire::Model::Callbacks
 
 
+	# analyzer
+
+	tire.settings :index => {
+      :analysis => {
+	      :analyzer => {
+	          :accent_analyzer => {
+	              :tokenizer => "standard",
+	              :filter => ["standard", "my_ascii_folding" ]
+	          }
+          },
+          :filter => {
+              :my_ascii_folding => {
+                  :type => "asciifolding",
+                  :preserve_original => true
+              }
+          }
+      }
+  }
+
+	# Tire/Elastic Seach Things
+	
+
+	mapping do
+	  indexes :id, type: 'integer'
+	  indexes :minute, type: 'integer'
+	  indexes :player, boost: 3, analyzer: 'accent_analyzer'
+	  indexes :opponent, boost: 2, analyzer: 'accent_analyzer'
+	  indexes :team, boost: 4, analyzer: 'accent_analyzer'
+	  indexes :date, type: 'date'
+	  indexes :stadium, analyzer: 'accent_analyzer'
+	  indexes :competition, boost: 3, analyzer: 'accent_analyzer'
+	  indexes :assist, boost: 2, analyzer: 'accent_analyzer'
+	end
+
+
+
 
 	def self.search(params)
 	  tire.search(page: params[:page], per_page: 12) do
