@@ -2,49 +2,43 @@ class Goal < ActiveRecord::Base
 	include Tire::Model::Search
 	include Tire::Model::Callbacks
 
-
-	# analyzer
-
 	tire.settings :index => {
       :analysis => {
-	      :analyzer => {
-	          :accent_analyzer => {
-	              :tokenizer => "standard",
-	              :filter => ["standard", "my_ascii_folding" ]
-	          }
-          },
-          :filter => {
-              :my_ascii_folding => {
-                  :type => "asciifolding",
-                  :preserve_original => true
+          :analyzer => {
+              :index_analyzer => {
+                  :tokenizer => "whitespace",
+                  :filter => ["asciifolding", "lowercase", "snowball"]
+              },
+              :search_analyzer => {
+                  :tokenizer => "whitespace",
+                  :filter => ["asciifolding", "lowercase", "snowball"]
               }
           }
       }
   }
 
-	# Tire/Elastic Seach Things
+
+		mapping do
+		  indexes :id, type: 'integer', index: :not_analyzed
+		  indexes :gfy, index: :not_analyzed
+		  indexes :minute, type: 'integer', index: :not_analyzed
+		  indexes :player, boost: 3, analyzer: :index_analyzer
+		  indexes :opponent, boost: 2,analyzer: :index_analyzer
+		  indexes :team, boost: 4, analyzer: :index_analyzer
+		  indexes :date, type: 'date', index: :not_analyzed
+		  indexes :stadium, analyzer: :index_analyzer
+		  indexes :competition, boost: 3, analyzer: :index_analyzer
+		  indexes :assist, boost: 2, analyzer: :index_analyzer
+		  indexes :stage, boost: 2, analyzer: :index_analyzer
+		end
 	
 
-	mapping do
-	  indexes :id, type: 'integer'
-	  indexes :minute, type: 'integer'
-	  indexes :player, boost: 3, analyzer: 'accent_analyzer'
-	  indexes :opponent, boost: 2, analyzer: 'accent_analyzer'
-	  indexes :team, boost: 4, analyzer: 'accent_analyzer'
-	  indexes :date, type: 'date'
-	  indexes :stadium, analyzer: 'accent_analyzer'
-	  indexes :competition, boost: 3, analyzer: 'accent_analyzer'
-	  indexes :assist, boost: 2, analyzer: 'accent_analyzer'
-	end
-
-
-
-
 	def self.search(params)
-	  tire.search(page: params[:page], per_page: 12) do
-	    query { string params[:query], default_operator: "AND" } if params[:query].present?
+	  tire.search(page: params[:page], per_page: 12) do 
+	    query { string params[:query], analyzer: :search_analyzer, :default_field => 'player' } if params[:query].present?
 	  end
 	end
+
 
 
 

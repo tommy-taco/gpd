@@ -1,0 +1,29 @@
+	class Product < ActiveRecord::Base
+		include Tire::Model::Search
+		include Tire::Model::Callbacks
+
+		settings :analysis => {
+		    :analyzer => {
+		      :default => {
+		        :tokenizer  => "standard",
+		        :filter  => ["standard", "asciifolding"]
+		      }
+		    }
+	  	} do
+
+			mapping do
+			  indexes :id, type: 'integer', index: :not_analyzed
+			  indexes :name, boost: 5, analyzer: 'default'
+			  indexes :website, index: :not_analyzed
+			  indexes :price, type: 'integer', index: :not_analyzed
+			  indexes :artist, boost: 3, analyzer: 'default'
+			  indexes :company, boost: 4, analyzer: 'default'
+			  indexes :date, type: 'date', index: :not_analyzed
+			end
+		end
+
+		def self.search(params)
+		  tire.search(page: params[:page], per_page: 12) do
+		    query { string params[:query], default_operator: "AND" } if params[:query].present?
+		  end
+		end

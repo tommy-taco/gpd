@@ -111,6 +111,8 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #999;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 footer a {
@@ -217,20 +219,47 @@ body {
 
 
 
+
+/*upload page*/
+
+.uploadPage {
+  margin-left: 250px;
+
+}
+
+.uploadPage input {
+  margin: 10px;
+
+}
+
 /*Goal Show*/
 
-.gfyShow {
-  width: 600px;
+.page-header h1 {
+
+  text-align: center;
+
+}
+
+
+.showContent {
   margin-left: auto;
   margin-right: auto;
-  
+  max-width: 1200px;
+}
+
+.showContent .form-group {
+  margin-top: 20px;
+
+}
+
+.gfyShow {
 
 }
 
 .gfyShow .gfyVid {
   border: #DEDEDE 10px groove;
   border-bottom-color: transparent;
-
+  max-width: 900px;
 }
 
 
