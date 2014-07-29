@@ -6,9 +6,10 @@ class GoalsController < ApplicationController
   def index
     @goals = Goal.search(params)
     @query = params[:query].to_s
+    @csvgoals = Goal.all
     respond_to do |format|
       format.html
-      format.csv { render text: @goals.to_csv }
+      format.csv { render text: @csvgoals.to_csv }
     end
   end
   
