@@ -3,39 +3,39 @@ class Goal < ActiveRecord::Base
 	include Tire::Model::Callbacks
 
 	tire.settings :index => {
-		:analysis => {
-			:analyzer => {
-			  	ascii: {
-			      type: 'custom',
-			      tokenizer: 'standard',
-			      filter: ['standard','asciifolding']
-				},
-				:default => {
-              		:type => 'ascii'
-            	}
-			}
-		}
-	}
+      :analysis => {
+          :analyzer => {
+              :index_analyzer => {
+                  :tokenizer => "whitespace",
+                  :filter => ["asciifolding", "lowercase", "snowball"]
+              },
+              :search_analyzer => {
+                  :tokenizer => "whitespace",
+                  :filter => ["asciifolding", "lowercase", "snowball"]
+              }
+          }
+      }
+  }
 
 
-	mapping do
-	  indexes :id, type: 'integer', index: :not_analyzed
-	  indexes :gfy, index: :not_analyzed
-	  indexes :minute, type: 'integer', index: :not_analyzed
-	  indexes :player, boost: 3, analyzer: :ascii
-	  indexes :opponent, boost: 2,analyzer: :ascii
-	  indexes :team, boost: 4, analyzer: :ascii
-	  indexes :date, type: 'date', index: :not_analyzed
-	  indexes :stadium, analyzer: :ascii
-	  indexes :competition, boost: 3, analyzer: :ascii
-	  indexes :assist, boost: 2, analyzer: :ascii
-	  indexes :stage, boost: 2, analyzer: :ascii
-	end
+		mapping do
+		  indexes :id, type: 'integer', index: :not_analyzed
+		  indexes :gfy, index: :not_analyzed
+		  indexes :minute, type: 'integer', index: :not_analyzed
+		  indexes :player, boost: 3, analyzer: :index_analyzer
+		  indexes :opponent, boost: 2,analyzer: :index_analyzer
+		  indexes :team, boost: 4, analyzer: :index_analyzer
+		  indexes :date, type: 'date', index: :not_analyzed
+		  indexes :stadium, analyzer: :index_analyzer
+		  indexes :competition, boost: 3, analyzer: :index_analyzer
+		  indexes :assist, boost: 2, analyzer: :index_analyzer
+		  indexes :stage, boost: 2, analyzer: :index_analyzer
+		end
 	
 
 	def self.search(params)
 	  tire.search(page: params[:page], per_page: 12) do 
-	    query { string params[:query], analyzer: :ascii } if params[:query].present?
+	    query { string params[:query], analyzer: :search_analyzer, :default_field => 'player' } if params[:query].present?
 	  end
 	end
 
