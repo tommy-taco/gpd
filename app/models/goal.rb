@@ -5,14 +5,17 @@ class Goal < ActiveRecord::Base
 	tire.settings :index => {
       :analysis => {
           :analyzer => {
-              :index_analyzer => {
-                  :tokenizer => "whitespace",
-                  :filter => ["asciifolding", "lowercase", "snowball"]
-              },
-              :search_analyzer => {
-                  :tokenizer => "whitespace",
-                  :filter => ["asciifolding", "lowercase", "snowball"]
-              }
+				:index_analyzer => {
+				  :tokenizer => "whitespace",
+				  :filter => ["asciifolding", "lowercase", "snowball"]
+				},
+				:search_analyzer => {
+				  :tokenizer => "whitespace",
+				  :filter => ["asciifolding", "lowercase", "snowball"]
+				},
+				:default => {
+					:type => "search_analyzer"
+				}
           }
       }
   }
@@ -35,12 +38,13 @@ class Goal < ActiveRecord::Base
 
 	def self.search(params)
 	  tire.search(page: params[:page], per_page: 12) do 
-	    query { string params[:query], analyzer: :search_analyzer, :default_field => 'player' } if params[:query].present?
+	    query { string params[:query] } if params[:query].present?
 	  end
 	end
 
 
-
+# add to fix ascii but no ascii
+# , analyzer: :search_analyzer, :default_field => 'player'
 
 	# Validations
 
