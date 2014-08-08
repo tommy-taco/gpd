@@ -12,9 +12,6 @@ class Goal < ActiveRecord::Base
 				:search_analyzer => {
 				  :tokenizer => "whitespace",
 				  :filter => ["asciifolding", "lowercase", "snowball"]
-				},
-				:default => {
-					:type => "search_analyzer"
 				}
           }
       }
