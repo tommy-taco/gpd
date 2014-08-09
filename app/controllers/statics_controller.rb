@@ -1,4 +1,6 @@
 class StaticsController < ApplicationController
+  before_action :admin_user, only: [:upload] 
+
   def index
     if params[:query].present?
       @goals = Goal.search(params[:query])
@@ -18,7 +20,12 @@ class StaticsController < ApplicationController
   
   def upload
   end
+
+  private
   
-  def gtest
-  end
+    # prevent non-admin from uploading goals
+    def admin_user
+      redirect_to(new_goal_path) unless current_user.admin?
+    end
+  
 end

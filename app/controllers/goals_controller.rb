@@ -1,5 +1,7 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :create, :update, :new]
+  before_action :admin_user, only: [:destroy, :import]       
 
   # GET /goals
   # GET /goals.json
@@ -38,6 +40,7 @@ class GoalsController < ApplicationController
 
   # GET /goals/1/edit
   def edit
+
   end
 
   # POST /goals
@@ -89,5 +92,10 @@ class GoalsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
       params.require(:goal).permit(:player, :minute, :team, :opponent, :date, :penalty, :own_goal, :stadium, :home, :competition, :stage, :assist, :video, :gfy)
+    end
+
+    # prevent non-admin from deleting goals
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end

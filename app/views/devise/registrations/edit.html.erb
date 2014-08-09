@@ -19,6 +19,10 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
+  <div><%= f.label :national_team %><br />
+  <%= f.collection_select :national_team, Country.order(:name), :id, :name, selected: @user.national_team %>
+
+
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
 
