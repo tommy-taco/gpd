@@ -38,6 +38,11 @@ gem 'rails_12factor', group: :production
 # Use unicorn as the app server
 # gem 'unicorn'
 
+# admin
+gem 'activeadmin', github: 'gregbell/active_admin'
+
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

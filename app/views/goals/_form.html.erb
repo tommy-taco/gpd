@@ -56,7 +56,7 @@
   <div class="form-group">
     <%= f.label :competition, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :competition, :class => 'text-field form-control' %>
+    <%= f.collection_select :competition, Competition.order(:name), :id, :name, include_blank: true, :class => 'text-field form-control' %>
     </div>
   </div>
   <div class="form-group">

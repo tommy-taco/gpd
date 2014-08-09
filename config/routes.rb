@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 	match '/dmca',    to: 'statics#dmca',    via: 'get'
 	match '/about',   to: 'statics#about',   via: 'get'
 	match '/contact', to: 'statics#contact', via: 'get'
