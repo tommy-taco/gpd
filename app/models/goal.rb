@@ -35,7 +35,7 @@ class Goal < ActiveRecord::Base
 
 	def self.search(params)
 	  tire.search(page: params[:page], per_page: 12) do 
-	    query { string params[:query] } if params[:query].present?
+	    query { string params[:query], analyzer: :search_analyzer } if params[:query].present?
 	  end
 	end
 
