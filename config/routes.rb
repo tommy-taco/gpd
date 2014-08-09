@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 	match '/upload', to: 'statics#upload', via: 'get'
 	match '/gtest', to: 'statics#gtest', via: 'get'
 
+  unless Rails.application.config.consider_all_requests_local
+    match '*not_found', to: 'errors#error_404'
+  end
+
 
 	resources :goals do
 		collection { post :import }
