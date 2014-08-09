@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   get 'users/show'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -8,10 +10,6 @@ Rails.application.routes.draw do
 	match '/contact', to: 'statics#contact', via: 'get'
 	match '/upload', to: 'statics#upload', via: 'get'
 	match '/gtest', to: 'statics#gtest', via: 'get'
-
-  unless Rails.application.config.consider_all_requests_local
-    match '*not_found', to: 'errors#error_404'
-  end
 
 
 	resources :goals do
