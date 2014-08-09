@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-
-  get 'users/show'
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 	match '/dmca',    to: 'statics#dmca',    via: 'get'

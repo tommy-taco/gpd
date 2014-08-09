@@ -1,6 +1,5 @@
 class StaticsController < ApplicationController
   def index
-    @user = current_user.username
     if params[:query].present?
       @goals = Goal.search(params[:query])
     else
