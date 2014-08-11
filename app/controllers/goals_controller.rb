@@ -91,7 +91,7 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:player, :minute, :team, :opponent, :date, :penalty, :own_goal, :stadium, :home, :competition, :stage, :assist, :video, :gfy)
+      params.require(:goal).permit(:player, :minute, :team_id, :opponent_id, :date, :penalty, :own_goal, :stadium, :home, :competition_id, :stage, :assist, :video, :gfy, :scored_with, :free_kick)
     end
 
     # prevent non-admin from deleting goals

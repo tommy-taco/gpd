@@ -2,7 +2,7 @@
 
 
 <div class="jumbotron">
-  <h1><%= @goal.player %> (<%= @goal.team %>) v. <%= @goal.opponent %></h1>
+  <h1><%= @goal.player %> (<%= @goal.team.name %>) v. <%= @goal.opponent.name %></h1>
 </div>
 
 <div class="showContent">
@@ -22,7 +22,7 @@
 
 <ul class="list-group">
   
-  <li class="list-group-item active"><%= @goal.competition %></li>
+  <li class="list-group-item active"><%= @goal.competition.name %></li>
   <% if @goal.stage != nil %><li class="list-group-item"><strong>Stage:</strong> <%= @goal.stage %></li><% end %>
   <% if @goal.assist != nil %><li class="list-group-item"><strong>Assist:</strong> <%= @goal.assist %></li><% end %>
   <% if @goal.minute != nil %><li class="list-group-item"><strong>Minute:</strong> '<%= @goal.minute %></li><% end %>

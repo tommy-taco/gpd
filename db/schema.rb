@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140809230959) do
+ActiveRecord::Schema.define(version: 20140811085252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,40 +55,46 @@ ActiveRecord::Schema.define(version: 20140809230959) do
     t.datetime "updated_at"
   end
 
-  create_table "countries", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "goals", force: true do |t|
     t.string   "player"
     t.integer  "minute"
-    t.string   "team"
-    t.string   "opponent"
     t.date     "date"
     t.boolean  "penalty"
     t.boolean  "own_goal"
     t.string   "stadium"
     t.boolean  "home"
-    t.string   "competition"
     t.string   "stage"
     t.string   "assist"
     t.string   "video"
     t.string   "gfy"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "team_id"
+    t.integer  "opponent_id"
+    t.integer  "competition_id"
+    t.boolean  "free_kick"
+    t.string   "scored_with"
   end
 
   add_index "goals", ["assist"], name: "index_goals_on_assist", using: :btree
-  add_index "goals", ["competition"], name: "index_goals_on_competition", using: :btree
+  add_index "goals", ["competition_id"], name: "index_goals_on_competition_id", using: :btree
   add_index "goals", ["date"], name: "index_goals_on_date", using: :btree
+  add_index "goals", ["free_kick"], name: "index_goals_on_free_kick", using: :btree
   add_index "goals", ["gfy"], name: "index_goals_on_gfy", using: :btree
-  add_index "goals", ["opponent"], name: "index_goals_on_opponent", using: :btree
+  add_index "goals", ["opponent_id"], name: "index_goals_on_opponent_id", using: :btree
   add_index "goals", ["own_goal"], name: "index_goals_on_own_goal", using: :btree
   add_index "goals", ["penalty"], name: "index_goals_on_penalty", using: :btree
   add_index "goals", ["player"], name: "index_goals_on_player", using: :btree
-  add_index "goals", ["team"], name: "index_goals_on_team", using: :btree
+  add_index "goals", ["scored_with"], name: "index_goals_on_scored_with", using: :btree
+  add_index "goals", ["team_id"], name: "index_goals_on_team_id", using: :btree
+
+  create_table "teams", force: true do |t|
+    t.string   "name"
+    t.boolean  "national"
+    t.boolean  "club"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -104,8 +110,8 @@ ActiveRecord::Schema.define(version: 20140809230959) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
-    t.string   "national_team"
     t.boolean  "admin",                  default: false
+    t.integer  "team_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

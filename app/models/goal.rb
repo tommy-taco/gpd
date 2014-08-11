@@ -1,4 +1,9 @@
 class Goal < ActiveRecord::Base
+	belongs_to :team, :class_name => 'Team'
+	belongs_to :opponent, :class_name => 'Team'
+	belongs_to :competition
+
+
 	include Tire::Model::Search
 	include Tire::Model::Callbacks
 
@@ -23,11 +28,11 @@ class Goal < ActiveRecord::Base
 		  indexes :gfy, index: :not_analyzed
 		  indexes :minute, type: 'integer', index: :not_analyzed
 		  indexes :player, boost: 3, analyzer: :index_analyzer
-		  indexes :opponent, boost: 2,analyzer: :index_analyzer
-		  indexes :team, boost: 4, analyzer: :index_analyzer
+		  indexes :opponent_id, boost: 2, analyzer: :index_analyzer, type: 'integer'
+		  indexes :team_id, boost: 4, analyzer: :index_analyzer, type: 'integer'
 		  indexes :date, type: 'date', index: :not_analyzed
 		  indexes :stadium, analyzer: :index_analyzer
-		  indexes :competition, boost: 3, analyzer: :index_analyzer
+		  indexes :competition_id, boost: 3, analyzer: :index_analyzer, type: 'integer'
 		  indexes :assist, boost: 2, analyzer: :index_analyzer
 		  indexes :stage, boost: 2, analyzer: :index_analyzer
 		end
@@ -47,9 +52,9 @@ class Goal < ActiveRecord::Base
 
 
 	validates :player, presence:true
-	validates :team, presence:true
-	validates :opponent, presence:true
-	validates :competition, presence:true
+	validates :team_id, presence:true
+	validates :opponent_id, presence:true
+	validates :competition_id, presence:true
 
 	# CSV Import/Export
 
@@ -64,7 +69,7 @@ class Goal < ActiveRecord::Base
 
 
 	def self.import(file)
-		accessible_attributes = [ "id", "player", "minute", "team", "opponent", "date", "penalty", "own_goal", "stadium", "home", "competition", "stage", "assist", "video", "gfy", "updated_at"]
+		accessible_attributes = [ "id", "player", "minute", "team_id", "opponent_id", "date", "penalty", "own_goal", "stadium", "home", "competition_id", "stage", "assist", "video", "gfy", "updated_at", "scored_with", "free_kick"]
 		CSV.foreach(file.path, headers: true) do |row|
 			goal = find_by_id(row["id"]) || new
 		    goal.attributes = row.to_hash.slice(*accessible_attributes)
