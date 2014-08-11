@@ -1,68 +1,91 @@
-<%= form_for @goal, :html => { :class => 'form-horizontal form-model' } do |f| %>
+<%= form_for @goal, :html => { :class => 'form-horizontal form-model', :role => 'form' } do |f| %>
   <div class="form-group">
     <%= f.label :player, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :player, :class => 'text-field form-control' %>
     </div>
   </div>
+
+    <div class="form-group">
+    <%= f.label :competition_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+    <%= f.collection_select :competition_id, Competition.order(:name), :id, :name, include_blank: true, :class => '' %>
+    </div>
+  </div>
+
+
+
+  
+  <div class="form-group">
+    <%= f.label :team_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.collection_select :team_id, Team.order(:name), :id, :name, include_blank: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :opponent_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.collection_select :opponent_id, Team.order(:name), :id, :name, include_blank: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :date, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.date_select :date, { :include_blank => true, :start_year => 1950,  }, :class => 'text-field form-control' %>
+    </div>
+  </div>
+
   <div class="form-group">
     <%= f.label :minute, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.number_field :minute, :class => 'text-field form-control' %>
     </div>
   </div>
+
+
+  <div class="checkform">
+    <div class="checksquare">
+    <%= f.label :penalty, :class => 'checkbox' %>
+      <%= f.check_box :penalty, :class => 'checkbox' %>
+      </div>
+
+      <div class="checksquare">
+    <%= f.label :own_goal, :class => 'checkbox' %>
+      <%= f.check_box :own_goal, :class => 'checkbox' %>
+      </div>
+
+      <div class="checksquare">
+    <%= f.label :free_kick, :class => 'checkbox' %>
+      <%= f.check_box :free_kick, :class => 'checkbox' %>
+      </div>
+
+      <div class="checksquare">
+    <%= f.label :home, :class => 'checkbox' %>
+      <%= f.check_box :home, :class => 'checkbox' %>
+      </div>
+  </div>
+
+
   <div class="form-group">
-    <%= f.label :team, :class => 'control-label col-md-2' %>
+    <%= f.label :scored_with, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :team, :class => 'text-field form-control' %>
+      <%= f.select :scored_with, [['Right Foot'], ['Left Food'], ['Header'], ['Other']] %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label :opponent, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :opponent, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :date, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.date_select :date, { :include_blank => true, :start_year => 1900 }, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :penalty, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.check_box :penalty, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :own_goal, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.check_box :own_goal, :class => 'text-field form-control' %>
-    </div>
-  </div>
+
+
   <div class="form-group">
     <%= f.label :stadium, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :stadium, :class => 'text-field form-control' %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label :home, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.check_box :home, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :competition, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-    <%= f.collection_select :competition, Competition.order(:name), :id, :name, include_blank: true, :class => 'text-field form-control' %>
-    </div>
-  </div>
+  
+
   <div class="form-group">
     <%= f.label :stage, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :stage, :class => 'text-field form-control' %>
+      <%= f.select :scored_with, [['League Game'], ['Group Stage'], ['Round of 16'], ['Quarterfinals'], ['Semi Finals'], ['3rd Place Match'], ['Final']] %>
     </div>
   </div>
   <div class="form-group">
