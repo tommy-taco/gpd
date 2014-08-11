@@ -69,7 +69,7 @@ class Goal < ActiveRecord::Base
 
 
 	def self.import(file)
-		accessible_attributes = [ "id", "player", "minute", "team_id", "opponent_id", "date", "penalty", "own_goal", "stadium", "home", "competition_id", "stage", "assist", "video", "gfy", "updated_at", "scored_with", "free_kick"]
+		accessible_attributes = [ "id", "player", "minute", "date", "penalty", "own_goal", "stadium", "home", "stage", "assist", "video", "gfy", "updated_at", "team_id", "opponent_id", "competition_id", "scored_with", "free_kick"]
 		CSV.foreach(file.path, headers: true) do |row|
 			goal = find_by_id(row["id"]) || new
 		    goal.attributes = row.to_hash.slice(*accessible_attributes)
