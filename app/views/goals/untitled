@@ -1,0 +1,42 @@
+<div class="fieldset">
+  <dl>
+
+
+
+
+
+
+
+      <dt class=""><%= model_class.human_attribute_name(:minute) %></dt>
+      <dd><%= @goal.minute %></dd>
+      <dt class=""><%= model_class.human_attribute_name(:date) %></dt>
+      <dd><%= @goal.date %></dd>
+      <dt class=""><%= model_class.human_attribute_name(:penalty) %></dt>
+      <dd><%= @goal.penalty %></dd>
+      <dt class=""><%= model_class.human_attribute_name(:own_goal) %></dt>
+      <dd><%= @goal.own_goal %></dd>
+      <dt class=""><%= model_class.human_attribute_name(:stadium) %></dt>
+      <dd><%= @goal.stadium %></dd>
+      <dt class=""><%= model_class.human_attribute_name(:home) %></dt>
+      <dd><%= @goal.home %></dd>
+      <dt class=""><%= model_class.human_attribute_name(:competition) %></dt>
+      <dd><%= @goal.competition %></dd>
+      <dt class=""><%= model_class.human_attribute_name(:stage) %></dt>
+      <dd><%= @goal.stage %></dd>
+      <dt class=""><%= model_class.human_attribute_name(:assist) %></dt>
+      <dd><%= @goal.assist %></dd>
+      <dt class=""><%= model_class.human_attribute_name(:video) %></dt>
+      <dd><%= @goal.video %></dd>
+      
+  </dl>
+</div>
+
+<ul class="list-group">
+<% if @goal.minute != nil %><li class="list-group-item"><%= @goal.competition %></li><% end %>
+<% if @goal.minute != nil %><li class="list-group-item">test</li><% end %>
+<% if @goal.minute != nil %><li class="list-group-item">test</li><% end %>
+<% if @goal.minute != nil %><li class="list-group-item">test</li><% end %>
+<% if @goal.minute != nil %><li class="list-group-item">test</li><% end %>
+<% if @goal.minute != nil %><li class="list-group-item">test</li><% end %>
+
+</ul>
