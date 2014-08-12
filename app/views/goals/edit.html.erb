@@ -1,5 +1,23 @@
 <%- model_class = Goal -%>
-<div class="page-header">
+<div class="jumbotron">
   <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Goal %></h1>
 </div>
+
+
+<% if @goal.gfy != blank? %>
+<div class="gfyShow">
+  <div class="vidOut">
+  	<div class="gfyitem" data-title=false data-autoplay=false data-controls=false data-expand=false data-id="<%= @gfyid %>" %>"></div> 
+  </div>
+</div>
+
+<% else %>
+
+<h3>Please add my Gfycat Link!</h3>
+
+<% end %>
+
+<div class="textMargin">
+
 <%= render :partial => 'form' %>
+</div>

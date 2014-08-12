@@ -40,7 +40,9 @@ class GoalsController < ApplicationController
 
   # GET /goals/1/edit
   def edit
-
+    if @goal.gfy != blank?
+      @gfyid = @goal.gfy.gsub("http://gfycat.com/", "")
+    end
   end
 
   # POST /goals

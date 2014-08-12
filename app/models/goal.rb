@@ -3,6 +3,8 @@ class Goal < ActiveRecord::Base
 	belongs_to :opponent, :class_name => 'Team'
 	belongs_to :competition
 
+	nilify_blanks :only => [:assist, :stadium, :scored_with, :date, :video, :gfy]
+
 
 	include Tire::Model::Search
 	include Tire::Model::Callbacks

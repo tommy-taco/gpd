@@ -255,7 +255,7 @@ body {
 .showContent {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1200px;
+  max-width: 1300px;
 }
 
 .showContent .form-group {
@@ -264,37 +264,40 @@ body {
 }
 
 .gfyShow {
-  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
-
+  max-width: 1000px
 }
 
-.gfyShow .gfyVid {
+.vidOut .gfyVid {
   border: #DEDEDE 10px groove;
-  border-bottom-color: transparent;
-  max-width: 900px;
 }
+
+
 
 .vidOut {
-  margin-left: auto;
-  margin-right: auto;
-
-
+  float: left;
+  max-width: 600px;
+  margin-right: 20px;
 }
 
 .list-group {
   margin-bottom: 20px;
   padding-left: 0;
-  max-width: 450px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 350px;
+  float: left
+
 }
 
 .list-group-item {
   text-align: center;
 
 
+}
+
+.showRow {
+
+  clear: both;
 }
 
 /*form*/

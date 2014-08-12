@@ -1,6 +1,8 @@
 <%- model_class = Goal -%>
-<div class="page-header">
+<div class="jumbotron">
   <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => Goal %></h1>
 </div>
-<%= render :partial => 'form' %>
+<div class="textMargin">
 
+<%= render :partial => 'form' %>
+</div>

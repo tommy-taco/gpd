@@ -9,7 +9,7 @@
     <div class="form-group">
     <%= f.label :competition_id, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-    <%= f.collection_select :competition_id, Competition.order(:name), :id, :name, include_blank: true, :class => '' %>
+    <%= f.collection_select :competition_id, Competition.order(:name), :id, :name, include_blank: true, :class => 'control-label col-md-2' %>
     </div>
   </div>
 
@@ -43,27 +43,29 @@
   </div>
 
 
-  <div class="checkform">
-    <div class="checksquare">
-    <%= f.label :penalty, :class => 'checkbox' %>
-      <%= f.check_box :penalty, :class => 'checkbox' %>
+    <div class="form-group">
+    <%= f.label :penalty, :class => 'control-label col-md-2' %>
+      <%= f.radio_button :penalty, false %>
+      <%= f.radio_button :penalty, true %>
       </div>
 
-      <div class="checksquare">
-    <%= f.label :own_goal, :class => 'checkbox' %>
-      <%= f.check_box :own_goal, :class => 'checkbox' %>
+      <div class="form-group">
+    <%= f.label :own_goal, :class => 'control-label col-md-2' %>
+      <%= f.radio_button :own_goal, false %>
+      <%= f.radio_button :own_goal, true %>
       </div>
 
-      <div class="checksquare">
-    <%= f.label :free_kick, :class => 'checkbox' %>
-      <%= f.check_box :free_kick, :class => 'checkbox' %>
+      <div class="form-group">
+    <%= f.label :free_kick, :class => 'control-label col-md-2' %>
+      <%= f.radio_button :free_kick, false %>
+      <%= f.radio_button :free_kick, true %>
       </div>
 
-      <div class="checksquare">
-    <%= f.label :home, :class => 'checkbox' %>
-      <%= f.check_box :home, :class => 'checkbox' %>
+      <div class="form-group">
+    <%= f.label :home, :class => 'control-label col-md-2' %>
+      <%= f.radio_button :home, false %>
+      <%= f.radio_button :home, true %>
       </div>
-  </div>
 
 
   <div class="form-group">

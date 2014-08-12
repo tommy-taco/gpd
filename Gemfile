@@ -41,6 +41,9 @@ gem 'rails_12factor', group: :production
 # admin
 gem 'activeadmin', github: 'gregbell/active_admin'
 
+# blanks to nil
+gem "nilify_blanks"
+
 
 
 # Use Capistrano for deployment
