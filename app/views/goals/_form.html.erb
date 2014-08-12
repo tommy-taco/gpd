@@ -69,7 +69,7 @@
   <div class="form-group">
     <%= f.label :scored_with, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.select :scored_with, [['Right Foot'], ['Left Food'], ['Header'], ['Other']] %>
+      <%= f.select :scored_with, [['Right Foot'], ['Left Foot'], ['Header'], ['Other']], include_blank: true, selected: @goal.scored_with %>
     </div>
   </div>
 
@@ -85,7 +85,7 @@
   <div class="form-group">
     <%= f.label :stage, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.select :scored_with, [['League Game'], ['Group Stage'], ['Round of 16'], ['Quarterfinals'], ['Semi Finals'], ['3rd Place Match'], ['Final']] %>
+      <%= f.select :stage, [['League Game'], ['Group Stage'], ['Round of 16'], ['Quarterfinals'], ['Semi Finals'], ['3rd Place Match'], ['Final']], include_blank: true, selected: @goal.stage %>
     </div>
   </div>
   <div class="form-group">
