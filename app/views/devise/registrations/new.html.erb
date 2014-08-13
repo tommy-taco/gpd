@@ -1,6 +1,9 @@
-<div class="page-header">
+<div class="jumbotron">
   <h1><%=t ".title", default: "Sign Up" %></h1>
 </div>
+
+
+<div class="textMargin">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal form-user"}) do |f| %>
   <%= devise_error_messages! %>
@@ -56,3 +59,4 @@
 
 <% end %>
 
+</div>

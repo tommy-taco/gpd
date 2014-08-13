@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default" role="navigation">
+
+    <!-- <ul class="nav nav-pills navbar-left">
+    <li><%= link_to "Add Goals", new_goal_path, :class => 'btn btn-info' %></li>
+    </ul> -->
+
+ 
+    <div class="nav-center">
+      <%= link_to(image_tag("logoNBG.png", :class => "navbar-brand nav", :alt => "Goalopedia"), root_path) %>
+    </div>
+
+
+
+
+    <%= form_tag goals_path, method: :get, class: "navbar-form navbar-right" do %>
+      <p>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search Players and Teams" %>
+        <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+      </p>
+    <% end %>
+
+
+
+
+  
+</nav>
+
+
+<div class="">
+      <%= link_to(image_tag("logoNBG.png", :class => "navbar-brand nav", :alt => "Goalopedia"), root_path) %>
+    </div>
+
