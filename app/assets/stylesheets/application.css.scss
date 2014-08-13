@@ -176,7 +176,34 @@ background-color: #DBFBFF;
 }
 
 
+/*rating stuff*/
 
+
+.rateStars {
+  margin-left: auto;
+  margin-right: auto;
+  width: 260px;
+}
+
+.rateStars .star img {
+  height: 20px;
+  margin-top: 9px;
+}
+
+.star {
+  float: left;
+
+}
+
+.raty-cancel {
+  display: none;
+
+}
+
+.avRating {
+  float: left;
+
+}
 
 /*Masonry Things*/
 

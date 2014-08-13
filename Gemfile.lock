@@ -179,6 +179,7 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.0.0)
+    ratyrate (1.2.0.alpha)
     rdoc (4.1.1)
       json (~> 1.4)
     responders (1.0.0)
@@ -256,6 +257,7 @@ DEPENDENCIES
   pg
   rails (= 4.1.1)
   rails_12factor
+  ratyrate
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring

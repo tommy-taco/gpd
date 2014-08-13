@@ -44,6 +44,8 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 # blanks to nil
 gem "nilify_blanks"
 
+# gem for rating
+gem 'ratyrate'
 
 
 # Use Capistrano for deployment
