@@ -45,7 +45,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem "nilify_blanks"
 
 # gem for rating
-gem 'ratyrate'
+gem 'ratyrate', :github => 'wazery/ratyrate'
 
 
 # Use Capistrano for deployment

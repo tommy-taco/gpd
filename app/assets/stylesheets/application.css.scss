@@ -19,8 +19,23 @@
 @import "bootstrap";
 
 
-/*Site Colors
+/*Site CSS
 */
+
+.btn-info {
+background-color: #31B0D5;
+border-color: #269ABC;
+}
+
+.btn-info:hover {
+  background-color: #1691B5;
+
+}
+
+
+
+
+
 
 
 
@@ -41,6 +56,8 @@
 .form-user {
   max-width: 450px;
 }
+
+
 
 
 /*Nav Bar*/
@@ -73,7 +90,7 @@
   padding: 5px;
   height: 70px;
   left: 50%;
-  margin-left: -135px;
+  margin-left: -120px;
   margin-top: 10px;
   position: absolute;
   top: -17px;
@@ -235,6 +252,33 @@ background-color: #DBFBFF;
   text-decoration: underline;
 }
 
+.btn-small {
+font-size: 10px;
+float: right;
+margin-top: 4px;
+
+}
+
+
+.btn-small:hover {
+  text-decoration: none;
+}
+
+.box a:hover {
+text-decoration: inherit;
+}
+
+.box h2:hover {
+  text-decoration: underline;
+
+}
+
+.box h2:hover {
+  font-size: 1.5em;
+
+}
+
+
 
 /*rating stuff*/
 
@@ -242,7 +286,7 @@ background-color: #DBFBFF;
 .rateStars {
   margin-left: auto;
   margin-right: auto;
-  width: 260px;
+  width: 200px;
 }
 
 .rateStars .star img {
@@ -391,6 +435,25 @@ body {
 
   clear: both;
 }
+
+.noRat {
+  height: 44px;
+  padding-top: 3px;
+  padding-left: 25px;
+
+}
+
+.noRat .star {
+  margin-top: 7px;
+
+}
+
+.margTop {
+  margin-top: 7px;
+
+}
+
+
 
 /*form*/
 

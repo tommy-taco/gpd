@@ -33,14 +33,19 @@ class Goal < ActiveRecord::Base
 		  indexes :id, type: 'integer', index: :not_analyzed
 		  indexes :gfy, index: :not_analyzed
 		  indexes :minute, type: 'integer', index: :not_analyzed
-		  indexes :player, boost: 3, analyzer: :index_analyzer
-		  indexes :opponent_id, boost: 2, analyzer: :index_analyzer, type: 'integer'
-		  indexes :team_id, boost: 4, analyzer: :index_analyzer, type: 'integer'
+		  indexes :player, boost: 5, analyzer: :index_analyzer
 		  indexes :date, type: 'date', index: :not_analyzed
-		  indexes :stadium, analyzer: :index_analyzer
-		  indexes :competition_id, boost: 3, analyzer: :index_analyzer, type: 'integer'
-		  indexes :assist, boost: 2, analyzer: :index_analyzer
-		  indexes :stage, boost: 2, analyzer: :index_analyzer
+		  indexes :stadium, boost: 2, analyzer: :index_analyzer
+		  indexes :assist, boost: 3, analyzer: :index_analyzer
+		  indexes :stage, boost: 3, analyzer: :index_analyzer
+		  # see json methods below, to search associations
+		  indexes :team_id, type: 'integer'
+		  indexes :team_name, boost: 4, analyzer: :index_analyzer
+		  indexes :opponent_id, type: 'integer'
+		  indexes :opponent_name, boost: 2, analyzer: :index_analyzer
+		  indexes :competition_id, type: 'integer'
+		  indexes :competition_name, boost: 3, analyzer: :index_analyzer
+
 		end
 	
 
@@ -48,6 +53,22 @@ class Goal < ActiveRecord::Base
 	  tire.search(page: params[:page], per_page: 12, load: true) do 
 	    query { string params[:query] } if params[:query].present?
 	  end
+	end
+
+	def to_indexed_json
+    	to_json(methods: [:team_name, :opponent_name, :competition_name])
+	end
+
+	def team_name
+		team.name
+	end
+
+	def opponent_name
+		opponent.name
+	end
+
+	def competition_name
+		competition.name
 	end
 
 

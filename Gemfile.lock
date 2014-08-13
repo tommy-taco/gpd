@@ -33,6 +33,12 @@ GIT
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
 
+GIT
+  remote: git://github.com/wazery/ratyrate.git
+  revision: 22fdf05f23fe610a84a6736021608d59607b9080
+  specs:
+    ratyrate (1.2.0.alpha)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -179,7 +185,6 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.0.0)
-    ratyrate (1.2.0.alpha)
     rdoc (4.1.1)
       json (~> 1.4)
     responders (1.0.0)
@@ -257,7 +262,7 @@ DEPENDENCIES
   pg
   rails (= 4.1.1)
   rails_12factor
-  ratyrate
+  ratyrate!
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
