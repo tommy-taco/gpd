@@ -82,6 +82,8 @@ class Goal < ActiveRecord::Base
 	validates :team_id, presence:true
 	validates :opponent_id, presence:true
 	validates :competition_id, presence:true
+	validates_format_of :gfy, :with => /\A(http:\/\/gfycat.com\/)[a-zA-Z]+\z/
+	validates :minute, :inclusion => 0..130
 
 	# CSV Import/Export
 
@@ -103,4 +105,8 @@ class Goal < ActiveRecord::Base
 		    goal.save!
 	  end
 	end
+
+
+
+
 end

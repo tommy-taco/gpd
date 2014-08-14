@@ -457,20 +457,41 @@ body {
 
 /*form*/
 
-.checkform {
-margin-bottom: 68px;
+.formDiv {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.checksquare {
-  float: left;
-  margin-left: 130px;
-  text-align: center;
+.formDiv .radio {
+  display: inline;
+  margin-left: 40px;
 
 }
 
-.checkbox {
+.formDiv .col-lg-10 {
+width: 75%;
+}
 
+.formDiv .col-lg-2 {
+width: 25%;
+}
 
+.formDiv .help-inline {
+  display: list-item;
+  color: #F00;
+  margin-left: 10%;
+  margin-top: 2%;
+  margin-bottom: 0%;
+  font-weight: bold;
+}
+
+.formDiv .alert {
+  color: #F00;
+  margin-left: 10%;
+  margin-top: 2%;
+  margin-bottom: 0%;
+  font-weight: bold;
 }
 
 /*Buttons*/

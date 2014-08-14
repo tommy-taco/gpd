@@ -1,119 +1,25 @@
-<%= form_for @goal, :html => { :class => 'form-horizontal form-model', :role => 'form' } do |f| %>
-  <div class="form-group">
-    <%= f.label :player, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :player, :class => 'text-field form-control' %>
-    </div>
-  </div>
-
-    <div class="form-group">
-    <%= f.label :competition_id, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-    <%= f.collection_select :competition_id, Competition.order(:name), :id, :name, include_blank: true, :class => 'control-label col-md-2' %>
-    </div>
-  </div>
-
-
-
-  
-  <div class="form-group">
-    <%= f.label :team_id, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.collection_select :team_id, Team.order(:name), :id, :name, include_blank: true %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :opponent_id, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.collection_select :opponent_id, Team.order(:name), :id, :name, include_blank: true %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :date, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.date_select :date, { :include_blank => true, :start_year => 1950,  }, :class => 'text-field form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :minute, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.number_field :minute, :class => 'text-field form-control' %>
-    </div>
-  </div>
-
-
-    <div class="form-group">
-    <%= f.label :penalty, :class => 'control-label col-md-2' %>
-      <%= f.radio_button :penalty, false %>
-      <%= f.radio_button :penalty, true %>
-      </div>
-
-      <div class="form-group">
-    <%= f.label :own_goal, :class => 'control-label col-md-2' %>
-      <%= f.radio_button :own_goal, false %>
-      <%= f.radio_button :own_goal, true %>
-      </div>
-
-      <div class="form-group">
-    <%= f.label :free_kick, :class => 'control-label col-md-2' %>
-      <%= f.radio_button :free_kick, false %>
-      <%= f.radio_button :free_kick, true %>
-      </div>
-
-      <div class="form-group">
-    <%= f.label :home, :class => 'control-label col-md-2' %>
-      <%= f.radio_button :home, false %>
-      <%= f.radio_button :home, true %>
-      </div>
-
-
-  <div class="form-group">
-    <%= f.label :scored_with, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.select :scored_with, [['Right Foot'], ['Left Foot'], ['Header'], ['Other']], include_blank: true, selected: @goal.scored_with %>
-    </div>
-  </div>
-
-
-  <div class="form-group">
-    <%= f.label :stadium, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :stadium, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  
-
-  <div class="form-group">
-    <%= f.label :stage, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.select :stage, [['League Game'], ['Group Stage'], ['Round of 16'], ['Quarterfinals'], ['Semi Finals'], ['3rd Place Match'], ['Final']], include_blank: true, selected: @goal.stage %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :assist, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :assist, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :video, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :video, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :gfy, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :gfy, :class => 'text-field form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class='col-md-offset-2 col-md-10'>
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  goals_path, :class => 'btn btn-default' %>
-    </div>
-  </div>
+<div class="formDiv">
+<%= simple_form_for(@goal, html: {class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :player, hint: "Please use the proper spelling, accents, and capitalization for each player, ie 'Thomas Müller'" %>
+  <%= f.association :team, collection: Team.order('name ASC') %>
+  <%= f.association :opponent, collection: Team.order('name ASC') %>
+  <%= f.association :competition, collection: Competition.order('name ASC') %>
+  <%= f.input :stage, as: :select, collection: ['League Game', 'Group Stage', 'Round of 16', 'Quarterfinals', 'Semi Finals', '3rd Place Match', 'Final', 'Other'] %>
+  <%= f.input :assist, hint: "If there is a registered assist on the goal, list it here, otherwise leave blank." %>
+  <%= f.input :date %>
+  <%= f.input :minute, range: 1..130 %>
+  <%= f.input :penalty, as: :radio_buttons, required: true %>
+  <%= f.input :own_goal, as: :radio_buttons, required: true %>
+  <%= f.input :free_kick, as: :radio_buttons, required: true %>
+  <%= f.input :home, as: :radio_buttons, label: "Location", collection: ['Home', 'Away/Other'], required: true %>
+  <%= f.input :scored_with, as: :select, collection: ['Right Foot', 'Left Foot', 'Header', 'Other'] %>
+  <%= f.input :stadium, placeholder: "Anfield, Home Depot Center, Camp Nou, etc." %>
+  <%= f.input :video, label: "Original Video", hint: raw("Please submit the link to the original video or gif with the goal if available."), placeholder: "youtube, dailymotion, etc." %>
+  <%= f.input :gfy, label: "GfyCat Link", hint: raw("Our platform only accepts submissions from #{link_to "gfycat.com", "http://gfycat.com/", :target => "_blank"}. Please paste your url with the full http text, ie: 'http://gfycat.com/FelinePiercingDeinonychus'."), placeholder: "http://gfycat.com/YourGfyId" %>
+  <%= f.error :base %>
+  <%= f.button :submit, "Add Goal", class: "btn btn-success topMarg" %>
 <% end %>
+
+</div>
+

@@ -47,6 +47,9 @@ gem "nilify_blanks"
 # gem for rating
 gem 'ratyrate', :github => 'wazery/ratyrate'
 
+# form things
+gem 'simple_form'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

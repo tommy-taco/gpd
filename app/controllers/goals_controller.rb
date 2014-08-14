@@ -20,7 +20,10 @@ class GoalsController < ApplicationController
     if params[:file].blank?
       redirect_to :back, alert: "No File Uploaded"
     else
+      query = "SELECT setval('goals_id_seq', max(id))
+         FROM goals"
     	Goal.import(params[:file])
+      Goal.connection.execute(query)
     	redirect_to root_url, notice: "Import Worked!"
     end
   end
