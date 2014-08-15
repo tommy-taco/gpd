@@ -1,8 +1,13 @@
 <%- model_class = Goal -%>
 
+<!-- meta info not working -->
+<% description '#{@goal.player} scores a goal for #{@goal.team.name} against #{@goal.opponent.name} in the #{@goal.competition}.' %>
+<% keywords '#{@goal.player}, #{@goal.team.name}, #{@goal.competition}, #{@goal.opponent.name}, #{@goal.date}, #{@goal.stadium}, #{@goal.scored_with}, #{@goal.assist}' %>
+
 
 <div class="jumbotron">
-  <h1><%= @goal.player %> (<%= @goal.team.name %>) v. <%= @goal.opponent.name %></h1>
+
+<h1><%= title "#{@goal.player} (#{@goal.team.name}) v. #{@goal.opponent.name}" %></h1>
 </div>
 
 <div class="showContent">
@@ -62,6 +67,8 @@
 </div>
 
 </div>
+
+
 
 
 

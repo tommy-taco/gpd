@@ -51,6 +51,9 @@ gem 'ratyrate', :github => 'wazery/ratyrate'
 gem 'simple_form'
 
 
+# meta searching
+gem 'meta-tags'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

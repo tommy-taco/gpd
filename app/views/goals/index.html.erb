@@ -1,11 +1,12 @@
 <div class="center">
  
+
   <div class="jumbotron">
 
   <% if @query.blank? %>
-    <h1>Search Your Favorite Teams and Players</h1>
+    <h1><%= title "Search Your Favorite Teams and Players" %></h1>
   <% else %>
-    <h1>Search Results for "<%= @query %>"</h1>
+    <h1><%= title "Seach results for #{@query}" %></h1>
   <% end %>
   </div>
 
