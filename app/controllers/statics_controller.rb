@@ -2,7 +2,6 @@ class StaticsController < ApplicationController
   before_action :admin_user, only: [:upload] 
 
   def index
-
     if params[:query].present?
       @goals = Goal.search(params[:query])
     else
@@ -20,6 +19,10 @@ class StaticsController < ApplicationController
   end
   
   def upload
+  end
+
+  def check
+    @teams = Team.all.order(:name)
   end
 
   private

@@ -105,8 +105,4 @@ class Goal < ActiveRecord::Base
 		    goal.save!
 	  end
 	end
-
-
-
-
 end

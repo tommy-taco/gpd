@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <h1><%= title "check" %></h1>
+
+</div>
+
+<div class="textMargin">
+
+<ul>
+<% @teams.each do |a| %>
+
+<li><%= a.name %> <%= a.id %></li>
+
+<% end %>
+</ul>
+
+</div>

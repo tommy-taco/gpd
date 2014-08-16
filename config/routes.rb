@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 	match '/about',   to: 'statics#about',   via: 'get'
 	match '/contact', to: 'statics#contact', via: 'get'
 	match '/upload', to: 'statics#upload', via: 'get'
+  match '/check', to: 'statics#check', via: 'get'
 
 
 	resources :goals do
