@@ -23,7 +23,7 @@ class GoalsController < ApplicationController
       query = "SELECT setval('goals_id_seq', max(id))
          FROM goals"
     	Goal.import(params[:file])
-      #Goal.connection.execute(query)
+      Goal.connection.execute(query)
     	redirect_to root_url, notice: "Import Worked!"
     end
   end
