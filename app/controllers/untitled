@@ -1,0 +1,3 @@
+<% set_meta_tags :title => 'Member Login',
+                 :description => @goals.player,
+                 :keywords => raw('#{@goal.player}, #{@goal.team.name}, #{@goal.competition}, #{@goal.opponent.name}, #{@goal.date}, #{@goal.stadium}, #{@goal.scored_with}, #{@goal.assist}') %>

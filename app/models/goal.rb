@@ -105,4 +105,19 @@ class Goal < ActiveRecord::Base
 		    goal.save!
 	  end
 	end
+
+# next and prev buttons
+
+def previous_goal
+  Goal.where(["id < ?", id]).last
+end
+
+def next_goal
+  Goal.where(["id > ?", id]).first
+end
+
+
+
+
+
 end

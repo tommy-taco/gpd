@@ -1,13 +1,11 @@
 <%- model_class = Goal -%>
 
-<!-- meta info not working -->
-<% description '#{@goal.player} scores a goal for #{@goal.team.name} against #{@goal.opponent.name} in the #{@goal.competition}.' %>
-<% keywords '#{@goal.player}, #{@goal.team.name}, #{@goal.competition}, #{@goal.opponent.name}, #{@goal.date}, #{@goal.stadium}, #{@goal.scored_with}, #{@goal.assist}' %>
-
+<% set_meta_tags :description => "#{@goal.player} scores a goal for #{@goal.team.name} in the #{@goal.competition.name} against #{@goal.opponent.name}. Watch this goal at Goalopedia and find more great goals.",
+                 :keywords => "#{@goal.player}, #{@goal.team.name}, #{@goal.competition.name}, #{@goal.opponent.name}, #{@goal.date.to_s(:long)}, #{@goal.stadium}, #{@goal.scored_with}, #{@goal.assist}" %>
 
 <div class="jumbotron">
 
-<h1><%= title "#{@goal.player} (#{@goal.team.name}) v. #{@goal.opponent.name}" %></h1>
+<h1><%= link_to "<", @goal.previous_goal %> <%= title "#{@goal.player} (#{@goal.team.name}) v. #{@goal.opponent.name}" %> <%= link_to ">", @goal.next_goal %></h1>
 </div>
 
 <div class="showContent">
@@ -20,28 +18,31 @@
 
   <ul class="list-group">
   
-  <li class="list-group-item active"><strong><% if @goal.date != nil %> <%= @goal.date.year %><% end %> <%= @goal.competition.name %></strong></li>
+    <li class="list-group-item active"><strong><% if @goal.date != nil %> <%= @goal.date.year %><% end %> <%= @goal.competition.name %></strong></li>
 
-  
-  <% if @goal.stage != nil %><li class="list-group-item"><strong>Stage:</strong> <%= @goal.stage %></li><% end %>
-  <% if @goal.assist != nil || @goal.assist.blank? != true %><li class="list-group-item"><strong>Assist:</strong> <%= @goal.assist %></li><% end %>
-  <% if @goal.minute != nil %><li class="list-group-item"><strong>Minute:</strong> '<%= @goal.minute %></li><% end %>
-  <% if @goal.date != nil %><li class="list-group-item"><strong>Date:</strong> <%= @goal.date.to_s(:long) %></li><% end %>
-  <% if @goal.stadium != nil %><li class="list-group-item"><strong>Stadium:</strong> <%= @goal.stadium %></li><% end %>
-  <% if @goal.scored_with %><li class="list-group-item"><strong>Scored With:</strong> <%= @goal.scored_with %></li><% end %>
-  <% if user_signed_in? != true %>
-  <li class="list-group-item active noRat"><strong class="avRating margTop">Rating:</strong> <%= rating_for @goal, "quality", :noRatedMsg => true, :enable_half => true, :half_show => true, :disable_after_rate => false %><%= link_to "Sign Up to Rate", new_user_registration_path, class: "btn btn-info btn-small" %></li>
-  <% else %>
-  <li class="list-group-item active ratingExtra"><strong class="avRating">Rating:</strong> <%= rating_for @goal, "quality", :noRatedMsg => true, :enable_half => true, :half_show => true, :disable_after_rate => false %></li>
-  <% end %>
-</ul>
+    
+    <% if @goal.stage != nil %><li class="list-group-item"><strong>Stage:</strong> <%= @goal.stage %></li><% end %>
+    <% if @goal.assist != nil || @goal.assist.blank? != true %><li class="list-group-item"><strong>Assist:</strong> <%= @goal.assist %></li><% end %>
+    <% if @goal.minute != nil %><li class="list-group-item"><strong>Minute:</strong> '<%= @goal.minute %></li><% end %>
+    <% if @goal.date != nil %><li class="list-group-item"><strong>Date:</strong> <%= @goal.date.to_s(:long) %></li><% end %>
+    <% if @goal.stadium != nil %><li class="list-group-item"><strong>Stadium:</strong> <%= @goal.stadium %></li><% end %>
+    <% if @goal.scored_with %><li class="list-group-item"><strong>Scored With:</strong> <%= @goal.scored_with %></li><% end %>
+    <% if user_signed_in? != true %>
+    <li class="list-group-item active noRat"><strong class="avRating margTop">Rating:</strong> <%= rating_for @goal, "quality", :noRatedMsg => true, :enable_half => true, :half_show => true, :disable_after_rate => false %><%= link_to "Sign Up to Rate", new_user_registration_path, class: "btn btn-info btn-small" %></li>
+    <% else %>
+    <li class="list-group-item active ratingExtra"><strong class="avRating">Rating:</strong> <%= rating_for @goal, "quality", :noRatedMsg => true, :enable_half => true, :half_show => true, :disable_after_rate => false %></li>
+    <% end %>
+    <% if user_signed_in? != true || @goal.scored_with.blank? != false || @goal.stadium.blank? != false || @goal.date.blank? != false || @goal.stage.blank? != false %>
+
+      <div class="showRow showEdit topMarg">
+        <%= link_to "Add Goal Data", edit_goal_path(@goal), :class => 'btn btn-info' %>  
+      </div>
+
+    <% end %>
+  </ul>
 
 
 </div>
-
-
-
-
 
 <% else %>
 
@@ -49,11 +50,10 @@
 
 <% end %>
 
-
+<%= link_to "< Previous", @goal.previous_goal %>
 
 <div class="form-group showRow">
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_goal_path(@goal), :class => 'btn btn-info' %>
+  <%= link_to "Incorrect info?", edit_goal_path(@goal), :class => '' %>
 <% if user_signed_in? && current_user.admin?  %>
     <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               goal_path(@goal),
