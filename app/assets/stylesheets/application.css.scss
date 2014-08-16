@@ -11,13 +11,14 @@
 * file per style scope.
 *
 *= require_self
+*= require font-awesome
 
 
 */
 @import "bootstrap_configuration";
 
 @import "bootstrap";
-
+@import "font-awesome";
 
 /*Site CSS
 */
@@ -188,7 +189,7 @@ font-size: 2em;
 }
 
 .jumbotron h1 a {
-  color: #DBFBFF;
+  color: white;
   text-decoration: none;
 }
 

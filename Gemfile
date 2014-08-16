@@ -64,6 +64,9 @@ gem 'tire'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# icons
+gem "font-awesome-rails"
+
 # heroku stuff
 
 gem 'bundler'

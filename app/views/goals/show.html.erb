@@ -5,7 +5,24 @@
 
 <div class="jumbotron">
 
-<h1><%= link_to "<", @goal.previous_goal %> <%= title "#{@goal.player} (#{@goal.team.name}) v. #{@goal.opponent.name}" %> <%= link_to ">", @goal.next_goal %></h1>
+<h1>
+<%= link_to @goal.previous_goal do %>
+  <i class="fa fa-arrow-left"></i>
+<% end %>
+
+
+<%= title "#{@goal.player} (#{@goal.team.name}) v. #{@goal.opponent.name}" %>
+
+
+
+
+<%= link_to @goal.next_goal do %>
+  <i class="fa fa-arrow-right"></i>
+<% end %>
+
+
+
+</h1>
 </div>
 
 <div class="showContent">
@@ -50,7 +67,8 @@
 
 <% end %>
 
-<%= link_to "< Previous", @goal.previous_goal %>
+
+
 
 <div class="form-group showRow">
   <%= link_to "Incorrect info?", edit_goal_path(@goal), :class => '' %>
