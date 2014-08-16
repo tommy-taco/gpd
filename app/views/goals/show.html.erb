@@ -6,7 +6,7 @@
 <div class="jumbotron">
 
 <h1>
-<%= link_to @goal.previous_goal do %>
+<%= link_to @goal.next_goal do %>
   <i class="fa fa-arrow-left"></i>
 <% end %>
 
@@ -16,7 +16,7 @@
 
 
 
-<%= link_to @goal.next_goal do %>
+<%= link_to @goal.previous_goal do %>
   <i class="fa fa-arrow-right"></i>
 <% end %>
 
