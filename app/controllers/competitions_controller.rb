@@ -2,7 +2,7 @@ class CompetitionsController < ApplicationController
   before_action :set_comp, only: [:show]
 
   def index
-  	@competitions = Competition.all
+  	@competitions = Competition.where(:id => Goal.select(:competition_id).uniq)
   end
 
   def show

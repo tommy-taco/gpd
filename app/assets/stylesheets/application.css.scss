@@ -37,9 +37,18 @@ border-color: #269ABC;
 /*Competitions*/
 
 .compBox {
-  background-color: blue;
+  background-color: #42CA8A;
+  color: white;
+}
 
+.compBox a {
+  color: white;
+}
 
+.extra {
+  min-width: 360px;
+  max-width: 450px;
+  height: 290px;
 }
 
 

@@ -1,0 +1,14 @@
+<div class="compBox box">
+
+	<% gfyid = competition.goals.last.gfy.to_s.gsub("http://gfycat.com/", "") %>
+
+		<h2>
+			<%= link_to competition do %>
+				<%= competition.name %> 
+			<% end %>
+		</h2>
+		<div class="gfySize">
+				<div class="gfyitem" data-title=false data-autoplay=false data-controls=false data-expand=false data-id="<%= gfyid %>"></div>
+		</div>
+
+	</div>
