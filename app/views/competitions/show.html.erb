@@ -1,0 +1,20 @@
+
+
+<div class="center">
+ 
+	<div class="jumbotron">
+	<h1><%= title "#{@competition.name}" %></h1>
+	</div>
+
+
+
+	<div id="goals" class="masonry clearfix">
+		<%= render @goals.order(:id).reverse_order %>
+	</div>
+
+	<div class="paginator">
+  	<%= will_paginate @goals, renderer: BootstrapPagination::Rails %>
+	</div>
+	</div>
+
+</div>

@@ -1,0 +1,26 @@
+<div class="jumbotron">
+<h1><%= title "Find Your Favorite Cups and Leagues" %></h1>
+</div>
+<div id="goals" class="masonry clearfix">
+
+
+<% @competitions.each do |a| %>
+	<% if a.goals.exists? %>
+		<div class="compBox box">
+	<% gfyid = a.goals.last.gfy.to_s.gsub("http://gfycat.com/", "") %>
+	
+	<h2>
+		<%= link_to a do %>
+			<%= a.name %> 
+		<% end %>
+	</h2>
+	<div class="gfySize">
+				<div class="gfyitem" data-title=false data-autoplay=false data-controls=false data-expand=false data-id="<%= gfyid %>"></div>
+	</div>
+	
+</div>
+		
+	<% end %>
+<% end %>
+
+</div>

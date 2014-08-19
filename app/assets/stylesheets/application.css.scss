@@ -34,6 +34,14 @@ border-color: #269ABC;
 }
 
 
+/*Competitions*/
+
+.compBox {
+  background-color: blue;
+
+
+}
+
 
 
 
@@ -254,16 +262,16 @@ background-color: #DBFBFF;
   max-width: 440px;
 }
 
-.box a {
+.goal.box a {
   color: #ffffff;
   text-decoration: none;
 }
 
-.box a:hover {
+.goal.box a:hover {
   text-decoration: underline;
 }
 
-.btn-small {
+.goal.btn-small {
 font-size: 10px;
 float: right;
 margin-top: 4px;
@@ -275,16 +283,16 @@ margin-top: 4px;
   text-decoration: none;
 }
 
-.box a:hover {
+.goal.box a:hover {
 text-decoration: inherit;
 }
 
-.box h2:hover {
+.goal.box h2:hover {
   text-decoration: underline;
 
 }
 
-.box h2:hover {
+.goal.box h2:hover {
   font-size: 1.5em;
 
 }
@@ -336,6 +344,19 @@ body {
   float: left;
   margin: 5px;
   padding: 5px;
+  line-height: 1.4em;
+  float: left;
+  text-align: center;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+}
+
+.goal.box {
+  float: left;
+  margin: 5px;
+  padding: 5px;
   color: #ffffff;
   background-color: $brand-primary;
   font-size: 11px;
@@ -345,6 +366,8 @@ body {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+
+
 }
 
 .box h2 {
