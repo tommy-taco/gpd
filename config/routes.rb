@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-resources :competitions, only: [:index, :show]
+
+  resources :competitions, only: [:index, :show]
+  resources :teams, only: [:index, :show]
+
 
   post '/rate' => 'rater#create', :as => 'rate'
   devise_for :admin_users, ActiveAdmin::Devise.config

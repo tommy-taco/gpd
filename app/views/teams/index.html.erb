@@ -1,0 +1,24 @@
+<div class="jumbotron">
+<h1>Find Your Favorite Teams</h1>
+</div>
+<div id="goals" class="masonry clearfix">
+
+	<%= render @teams %>
+	<div class="compBox box">
+		<h2><%= link_to "Can't Find it? Add Your Favorite Team", new_user_registration_path %></h2>
+		<div class="gfySize">
+				<div class="gfyitem" data-title=false data-autoplay=true data-controls=false data-expand=false data-id="HappyNecessaryBernesemountaindog"></div>
+		</div>
+
+	</div>
+
+</div>
+
+<div class="paginator">
+  	<%= will_paginate @teams, renderer: BootstrapPagination::Rails %>
+</div>
+
+
+<% title 'Teams' %>
+<% description 'Check out the highlights for your favorite teams, including every goal from the 2014 World Cup.' %>
+<% keywords 'World Cup, Premier League, La Liga, Cups, Leagues, Highlights, gifs, Gfycat, soccer, football, goals, goal, Liverpool, Barcelona, Real Madrid, Manchester United, Chelsea, Arsenal' %>
