@@ -44,8 +44,6 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 # blanks to nil
 gem "nilify_blanks"
 
-# gem for rating
-gem 'ratyrate', :github => 'wazery/ratyrate'
 
 # form things
 gem 'simple_form'

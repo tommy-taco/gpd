@@ -2,7 +2,6 @@ class Goal < ActiveRecord::Base
 	belongs_to :team, :class_name => 'Team'
 	belongs_to :opponent, :class_name => 'Team'
 	belongs_to :competition
-	ratyrate_rateable "quality"
 	include Enumerable
 
 
