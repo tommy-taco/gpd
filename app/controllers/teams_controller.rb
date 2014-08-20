@@ -2,7 +2,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show]
 
   def index
-  	@teams = Team.where(:id => Goal.select(:team_id).uniq).paginate(page: params[:page], :per_page => 24)
+  	@teams = Team.where(:id => Goal.select(:team_id).uniq).order("name").paginate(page: params[:page], :per_page => 24)
   end
 
   def show

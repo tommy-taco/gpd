@@ -23,6 +23,7 @@ class StaticsController < ApplicationController
 
   def check
     @teams = Team.all.order(:name)
+    @goals = Goal.all
   end
 
   private

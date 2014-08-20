@@ -81,6 +81,7 @@ class Goal < ActiveRecord::Base
 
 	validates :player, presence:true
 	validates :team_id, presence:true
+	validates :date, presence:true
 	validates :opponent_id, presence:true
 	validates :competition_id, presence:true
 	validates_format_of :gfy, :with => /\A(http:\/\/gfycat.com\/)[a-zA-Z]+\z/

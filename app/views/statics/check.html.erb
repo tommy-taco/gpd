@@ -13,4 +13,15 @@
 <% end %>
 </ul>
 
+<ul>
+<% @goals.each do |a| %>
+
+<li><%= a.player %> <%= a.date.blank? %></li>
+
+<% end %>
+</ul>
+
+
+
+
 </div>
