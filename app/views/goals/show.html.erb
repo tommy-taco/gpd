@@ -49,7 +49,7 @@
     <% else %>
     <li class="list-group-item active ratingExtra"><strong class="avRating">Rating:</strong> <%= rating_for @goal, "quality", :noRatedMsg => true, :enable_half => true, :half_show => true, :disable_after_rate => false %></li>
     <% end %>
-    <% if user_signed_in? != true || @goal.scored_with.blank? != false || @goal.stadium.blank? != false || @goal.date.blank? != false || @goal.stage.blank? != false %>
+    <% if user_signed_in? != false || @goal.scored_with.blank? != false || @goal.stadium.blank? != false || @goal.date.blank? != false || @goal.stage.blank? != false %>
 
       <div class="showRow showEdit topMarg">
         <%= link_to "Add Goal Data", edit_goal_path(@goal), :class => 'btn btn-info' %>  
