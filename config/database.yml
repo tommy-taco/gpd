@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: goalopedia_test_development
+  database: goalopedia_development
   pool: 5
   username: ajhoward
   password:
@@ -9,7 +9,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: goalopedia_test_test
+  database: goalopedia_test
   pool: 5
   username: ajhoward
   password: 

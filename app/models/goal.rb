@@ -2,7 +2,6 @@ class Goal < ActiveRecord::Base
 	belongs_to :team, :class_name => 'Team'
 	belongs_to :opponent, :class_name => 'Team'
 	belongs_to :competition
-	include Enumerable
 
 
 	nilify_blanks :only => [:assist, :stadium, :scored_with, :date, :video, :gfy]
@@ -84,7 +83,7 @@ class Goal < ActiveRecord::Base
 	validates :opponent_id, presence:true
 	validates :competition_id, presence:true
 	validates_format_of :gfy, :with => /\A(http:\/\/gfycat.com\/)[a-zA-Z]+\z/
-	validates :minute, :inclusion => 0..130
+	validates :minute, :inclusion => 0..130, :allow_nil => true
 
 	# CSV Import/Export
 

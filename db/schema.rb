@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820201224) do
+ActiveRecord::Schema.define(version: 20140819062229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,34 +58,6 @@ ActiveRecord::Schema.define(version: 20140820201224) do
     t.datetime "updated_at"
   end
 
-  create_table "comments", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "holder_id"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.string   "commentable_url"
-    t.string   "commentable_title"
-    t.string   "commentable_state"
-    t.string   "anchor"
-    t.string   "title"
-    t.string   "contacts"
-    t.text     "raw_content"
-    t.text     "content"
-    t.string   "view_token"
-    t.string   "state",             default: "draft"
-    t.string   "ip",                default: "undefined"
-    t.string   "referer",           default: "undefined"
-    t.string   "user_agent",        default: "undefined"
-    t.integer  "tolerance_time"
-    t.boolean  "spam",              default: false
-    t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.integer  "depth",             default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "competitions", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -112,9 +84,6 @@ ActiveRecord::Schema.define(version: 20140820201224) do
     t.integer  "competition_id"
     t.boolean  "free_kick"
     t.string   "scored_with"
-    t.integer  "draft_comments_count",     default: 0
-    t.integer  "published_comments_count", default: 0
-    t.integer  "deleted_comments_count",   default: 0
   end
 
   add_index "goals", ["assist"], name: "index_goals_on_assist", using: :btree
@@ -162,50 +131,6 @@ ActiveRecord::Schema.define(version: 20140820201224) do
 
   add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
 
-  create_table "rs_evaluations", force: true do |t|
-    t.string   "reputation_name"
-    t.integer  "source_id"
-    t.string   "source_type"
-    t.integer  "target_id"
-    t.string   "target_type"
-    t.float    "value",           default: 0.0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rs_evaluations", ["reputation_name", "source_id", "source_type", "target_id", "target_type"], name: "index_rs_evaluations_on_reputation_name_and_source_and_target", unique: true, using: :btree
-  add_index "rs_evaluations", ["reputation_name"], name: "index_rs_evaluations_on_reputation_name", using: :btree
-  add_index "rs_evaluations", ["source_id", "source_type"], name: "index_rs_evaluations_on_source_id_and_source_type", using: :btree
-  add_index "rs_evaluations", ["target_id", "target_type"], name: "index_rs_evaluations_on_target_id_and_target_type", using: :btree
-
-  create_table "rs_reputation_messages", force: true do |t|
-    t.integer  "sender_id"
-    t.string   "sender_type"
-    t.integer  "receiver_id"
-    t.float    "weight",      default: 1.0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rs_reputation_messages", ["receiver_id", "sender_id", "sender_type"], name: "index_rs_reputation_messages_on_receiver_id_and_sender", unique: true, using: :btree
-  add_index "rs_reputation_messages", ["receiver_id"], name: "index_rs_reputation_messages_on_receiver_id", using: :btree
-  add_index "rs_reputation_messages", ["sender_id", "sender_type"], name: "index_rs_reputation_messages_on_sender_id_and_sender_type", using: :btree
-
-  create_table "rs_reputations", force: true do |t|
-    t.string   "reputation_name"
-    t.float    "value",           default: 0.0
-    t.string   "aggregated_by"
-    t.integer  "target_id"
-    t.string   "target_type"
-    t.boolean  "active",          default: true
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rs_reputations", ["reputation_name", "target_id", "target_type"], name: "index_rs_reputations_on_reputation_name_and_target", unique: true, using: :btree
-  add_index "rs_reputations", ["reputation_name"], name: "index_rs_reputations_on_reputation_name", using: :btree
-  add_index "rs_reputations", ["target_id", "target_type"], name: "index_rs_reputations_on_target_id_and_target_type", using: :btree
-
   create_table "teams", force: true do |t|
     t.string   "name"
     t.boolean  "national"
@@ -215,12 +140,12 @@ ActiveRecord::Schema.define(version: 20140820201224) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                       default: "",    null: false
-    t.string   "encrypted_password",          default: "",    null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",               default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -228,21 +153,10 @@ ActiveRecord::Schema.define(version: 20140820201224) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
-    t.boolean  "admin",                       default: false
+    t.boolean  "admin",                  default: false
     t.integer  "team_id"
-    t.integer  "my_draft_comments_count",     default: 0
-    t.integer  "my_published_comments_count", default: 0
-    t.integer  "my_comments_count",           default: 0
-    t.integer  "draft_comcoms_count",         default: 0
-    t.integer  "published_comcoms_count",     default: 0
-    t.integer  "deleted_comcoms_count",       default: 0
-    t.integer  "spam_comcoms_count",          default: 0
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
