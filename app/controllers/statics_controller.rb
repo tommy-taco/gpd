@@ -23,7 +23,7 @@ class StaticsController < ApplicationController
 
   def check
     @teams = Team.all.order(:name)
-    @goals = Goal.all
+    @goals = Team.find(125).goals_scored
   end
 
   private

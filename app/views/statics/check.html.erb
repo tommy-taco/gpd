@@ -5,6 +5,17 @@
 
 <div class="textMargin">
 
+
+<% @goals.each do |a| %>
+<% gfyid = a.gfy.to_s.gsub("http://gfycat.com/", "") %>
+<%= a.player %>
+<img src="http://thumbs.gfycat.com/<%= gfyid %>-thumb100.jpg">
+
+
+<% end %>
+</ul>
+
+
 <ul>
 <% @teams.each do |a| %>
 
@@ -13,13 +24,7 @@
 <% end %>
 </ul>
 
-<ul>
-<% @goals.each do |a| %>
 
-<li><%= a.player %> <%= a.date.blank? %></li>
-
-<% end %>
-</ul>
 
 
 

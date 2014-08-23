@@ -58,7 +58,7 @@
 
 .navbar-default .navbar-nav > li > a {
   color: #FFF;
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin-top: 5px;
 }
 
@@ -100,7 +100,7 @@ margin-left: 5px;
 .navForm {
 width: 300px;
 float: left;
-margin-left: 8%;
+margin-left: 3%;
 }
 
 .navbar-form.navbar-right {
@@ -430,8 +430,27 @@ body {
 
 .attribution {
   font: 12px/17px "ProximaNovaRegular", Helvetica, Arial, sans-serif;
-color: #999;
-font-style: italic;
+  color: #999;
+  font-style: italic;
+  float: left;
+}
+
+.attDiv {
+  margin-bottom: 40px;
+  width: 100%
+}
+
+
+
+#twitter-widget-0 {
+  float: right;
+  margin-right: -15px;
+}
+
+.redditLink {
+  float: right;
+  width: 36px;
+  margin-right: 10px;
 }
 
 .showContent {
@@ -441,7 +460,7 @@ font-style: italic;
 }
 
 .showContent .form-group {
-  margin-top: 20px;
+  margin-top: 30px;
 
 }
 
@@ -466,7 +485,7 @@ font-style: italic;
 .list-group {
   margin-bottom: 20px;
   padding-left: 0;
-  max-width: 350px;
+  min-width: 350px;
   float: left
 
 }
@@ -504,6 +523,44 @@ font-style: italic;
 
 }
 
+
+.otherGoals {
+  clear: both;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.otherGoals li {
+  list-style: none;
+
+}
+
+.otherGoals a {
+  font-size: 1.5em;
+
+
+}
+
+.goalThumb {
+  float: left;
+  margin-left: 50px;
+  text-align: center;
+}
+
+.teamLink {
+  clear: both;
+}
+
+.panel-heading a {
+  color: white;
+
+
+}
+
+.panel-body {
+  padding: 5px 15px 15px;
+}
 
 
 /*form*/

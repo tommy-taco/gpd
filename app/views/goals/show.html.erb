@@ -5,24 +5,15 @@
 
 <div class="jumbotron">
 
-<h1>
-<%= link_to @goal.next_goal do %>
-  <i class="fa fa-arrow-left"></i>
-<% end %>
-
-
-<%= title "#{@goal.player} (#{@goal.team.name}) v. #{@goal.opponent.name}" %>
-
-
-
-
-<%= link_to @goal.previous_goal do %>
-  <i class="fa fa-arrow-right"></i>
-<% end %>
-
-
-
-</h1>
+  <h1>
+    <%= link_to @goal.next_goal do %>
+      <i class="fa fa-arrow-left"></i>
+    <% end %>
+    <%= title "#{@goal.player} (#{@goal.team.name}) v. #{@goal.opponent.name}" %>
+    <%= link_to @goal.previous_goal do %>
+      <i class="fa fa-arrow-right"></i>
+    <% end %>
+  </h1>
 </div>
 
 <div class="showContent">
@@ -31,7 +22,13 @@
 <div class="gfyShow">
   <div class="vidOut">
   	<div class="gfyitem" data-title=false data-autoplay=true data-controls=false data-expand=false data-id="<%= @gfyid %>" %>"></div> 
+    <div class="attDiv">
     <a href="http://gfycat.com/" class="attribution">Via Gfycat.com</a>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-related="goalopedia" data-hashtags="goalopedia">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit1.gif" alt="submit to reddit" border="0" class="redditLink" /> </a>
+    </div>
+
   </div>
 
   <ul class="list-group">
@@ -45,15 +42,13 @@
     <% if @goal.date != nil %><li class="list-group-item"><strong>Date:</strong> <%= @goal.date.to_s(:long) %></li><% end %>
     <% if @goal.stadium != nil %><li class="list-group-item"><strong>Stadium:</strong> <%= @goal.stadium %></li><% end %>
     <% if @goal.scored_with %><li class="list-group-item"><strong>Scored With:</strong> <%= @goal.scored_with %></li><% end %>
-    <% if user_signed_in? != false || @goal.scored_with.blank? != false || @goal.stadium.blank? != false || @goal.date.blank? != false || @goal.stage.blank? != false %>
-
+    <% if @goal.minute.nil? == true || @goal.stadium.nil? == true || @goal.scored_with.nil? == true || @goal.own_goal.nil? == true || @goal.home.nil? == true || @goal.free_kick.nil? == true || @goal.penalty.nil? == true %>
       <div class="showRow showEdit topMarg">
         <%= link_to "Add Goal Data", edit_goal_path(@goal), :class => 'btn btn-info' %>  
       </div>
 
     <% end %>
   </ul>
-
 
 </div>
 
@@ -63,8 +58,37 @@
 
 <% end %>
 
+<div class="otherGoals">
+  <div class="panel panel-primary">
+    <div class="panel-heading"><%= link_to "More #{@goal.team.name} Goals", team_url(@goal.team) %> <i class="fa fa-arrow-right"></i></div>
+    <div class="panel-body">
+      <% @goal.team.goals_scored[0..3].each do |a| %>
+        <% gfyid = a.gfy.to_s.gsub("http://gfycat.com/", "") %>
+        <div class="goalThumb">
+          <%= link_to goal_url(a) do %>
+            <h5><%= a.player %> v. <%= a.opponent.name %></h5>
+          <% end %>
+          <%= link_to image_tag("http://thumbs.gfycat.com/#{gfyid}-thumb100.jpg"), goal_url(a) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-
+  <div class="panel panel-primary">
+    <div class="panel-heading"><%= link_to "More #{@goal.opponent.name} Goals", team_url(@goal.opponent) %> <i class="fa fa-arrow-right"></i></div>
+    <div class="panel-body">
+      <% @goal.opponent.goals_scored[0..3].each do |a| %>
+        <% gfyid = a.gfy.to_s.gsub("http://gfycat.com/", "") %>
+        <div class="goalThumb">
+          <%= link_to goal_url(a) do %>
+            <h5><%= a.player %> v. <%= a.opponent.name %></h5>
+          <% end %>
+          <%= link_to image_tag("http://thumbs.gfycat.com/#{gfyid}-thumb100.jpg"), goal_url(a) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <div class="form-group showRow">
   <%= link_to "Incorrect info?", edit_goal_path(@goal), :class => '' %>

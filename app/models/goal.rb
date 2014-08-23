@@ -116,8 +116,4 @@ def next_goal
   Goal.where(["id > ?", id]).first
 end
 
-
-
-
-
 end
