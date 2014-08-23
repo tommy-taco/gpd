@@ -74,6 +74,8 @@
     </div>
   </div>
 
+  <% if @goal.opponent.goals_scored.count > 0 %>
+
   <div class="panel panel-primary">
     <div class="panel-heading"><%= link_to "More #{@goal.opponent.name} Goals", team_url(@goal.opponent) %> <i class="fa fa-arrow-right"></i></div>
     <div class="panel-body">
@@ -88,7 +90,10 @@
       <% end %>
     </div>
   </div>
+
+<% end %>
 </div>
+
 
 <div class="form-group showRow">
   <%= link_to "Incorrect info?", edit_goal_path(@goal), :class => '' %>
