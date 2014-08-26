@@ -349,7 +349,6 @@ body {
 .goal.box {
   float: left;
   margin: 5px;
-  padding: 5px;
   color: #ffffff;
   background-color: #42CA8A;
   font-size: 11px;
@@ -363,13 +362,16 @@ body {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+}
 
+.bottomGoal {
+  margin-left: -10px;
 
 }
 
 .box h2 {
     font-size: 1.5em;
-    margin-top: 0px
+    margin-top: 10px
 }
 
 /**** Clearfix ****/
@@ -385,7 +387,7 @@ body {
 .paginator {
   clear: both;
   margin-top: 50px;
-  max-width: 500px;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }

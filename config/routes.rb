@@ -2,7 +2,12 @@ Rails.application.routes.draw do
 
 
   resources :competitions, only: [:index, :show]
-  resources :teams, only: [:index, :show]
+  resources :teams, only: [:index, :show] do
+    collection do
+      get 'club'
+      get 'national'
+    end
+  end
 
 
   devise_for :admin_users, ActiveAdmin::Devise.config

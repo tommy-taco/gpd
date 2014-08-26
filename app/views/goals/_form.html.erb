@@ -18,7 +18,7 @@
   <%= f.input :video, label: "Original Video", hint: raw("Please submit the link to the original video or gif with the goal if available."), placeholder: "youtube, dailymotion, etc." %>
   <%= f.input :gfy, label: "GfyCat Link", hint: raw("Our platform only accepts submissions from #{link_to "gfycat.com", "http://gfycat.com/", :target => "_blank"}. Please paste your url with the full http text, ie: 'http://gfycat.com/FelinePiercingDeinonychus'."), placeholder: "http://gfycat.com/YourGfyId" %>
   <%= f.error :base %>
-  <%= f.button :submit, "Add Goal", class: "btn btn-success topMarg" %>
+  <%= f.button :submit, "Submit", class: "btn btn-success topMarg" %>
 <% end %>
 
 </div>
