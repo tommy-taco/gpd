@@ -1,31 +1,38 @@
-<div class="uploadPage">
+<div class="jumbotron">
+<h1>Admin Page</h1>
+</div>
 
-	<h2>Upload/Download Goals Goals</h2>
-	<h3>Admin Only</h3>
+<div class="textMargin">
+	<div class="adminBox">
+		<h2>Upload/Download Goals Goals</h2>
+		<h3>Admin Only</h3>
 
-	<h4>Upload</h4>
-
-
-	<%= form_tag import_goals_path, multipart: true do %>
-	  <%= file_field_tag :file %>
-	  <%= submit_tag "Import" %>
-	<% end %>
-
-	<h4>Download</h4>
+		<h4>Upload</h4>
 
 
-	<p>
-	  Download:
-	  <%= link_to "CSV", goals_path(format: "csv") %>
-	</p>
+		<%= form_tag import_goals_path, multipart: true do %>
+		  <%= file_field_tag :file %>
+		  <%= submit_tag "Import" %>
+		<% end %>
 
-	<p> Users</p>
+		<h4>Download</h4>
+
+
+		<p>
+		  Download:
+		  <%= link_to "CSV", goals_path(format: "csv") %>
+		</p>
+	</div>
+	
+	<div class="adminBox">
+	<h2> Users</h2>
 
 	<ul>
 		<% @users.each do |a| %>
 
-		<li><%= a.username %> <%= a.id %></li>
+		<li><%= a.id %> | <%= a.username %> | <%= a.email %></li>
 
 		<% end %>
 	</ul>
+	</div>
 </div>

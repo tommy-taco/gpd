@@ -218,6 +218,7 @@ footer {
   color: #999;
   padding-left: 10px;
   padding-right: 10px;
+  clear: both;
 }
 
 footer a {
@@ -627,6 +628,24 @@ width: 25%;
 
 .topMarg {
   margin-top: 15px;
+
+
+}
+
+
+/*Admin stuff*/
+
+.adminBox {
+  background-color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  width: 500px;
+  padding: 10px;
+  float: left;
+  margin: 15px;
+  clear: both;
+
 
 
 }

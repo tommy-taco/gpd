@@ -19,7 +19,7 @@ class StaticsController < ApplicationController
   end
   
   def upload
-    @users = User.all
+    @users = User.all.order(:id)
   end
 
   def check
