@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  belongs_to :team, :class_name => 'Team'
+
+  has_many :goals
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

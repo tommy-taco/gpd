@@ -1,7 +1,8 @@
 class StaticsController < ApplicationController
-  before_action :admin_user, only: [:upload] 
+  before_action :admin_user, only: [:upload, :check] 
 
   def index
+    @user = current_user
     if params[:query].present?
       @goals = Goal.search(params[:query])
     else

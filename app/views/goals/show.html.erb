@@ -23,7 +23,12 @@
   <div class="vidOut">
   	<div class="gfyitem" data-title=false data-autoplay=true data-controls=false data-expand=false data-id="<%= @gfyid %>" %>"></div> 
     <div class="attDiv">
-    <a href="http://gfycat.com/" class="attribution">Via Gfycat.com</a>
+      <div class="attribution">
+
+    <%= link_to "Posted by #{@goal.user.username}", user_url(@goal.user) %><a href="http://gfycat.com/" class="att"> via Gfycat.com</a>
+      </div>
+
+
     <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-related="goalopedia" data-hashtags="goalopedia">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     <a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit1.gif" alt="submit to reddit" border="0" class="redditLink" /> </a>

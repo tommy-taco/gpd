@@ -51,7 +51,7 @@ class GoalsController < ApplicationController
   # POST /goals
   # POST /goals.json
   def create
-    @goal = Goal.new(goal_params)
+    @goal = current_user.goals.build(goal_params)
 
     respond_to do |format|
       if @goal.save
@@ -96,7 +96,7 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:player, :minute, :team_id, :opponent_id, :date, :penalty, :own_goal, :stadium, :home, :competition_id, :stage, :assist, :video, :gfy, :scored_with, :free_kick)
+      params.require(:goal).permit(:player, :minute, :team_id, :opponent_id, :date, :penalty, :own_goal, :stadium, :home, :competition_id, :stage, :assist, :video, :gfy, :scored_with, :free_kick, :user_id)
     end
 
     # prevent non-admin from deleting goals
