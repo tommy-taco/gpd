@@ -51,7 +51,7 @@ class Goal < ActiveRecord::Base
 
 	def self.search(params)
 	  tire.search(page: params[:page], per_page: 12, load: true) do 
-	    query { string params[:query] } if params[:query].present?
+	    query { string params[:query], default_operator: "AND" } if params[:query].present?
 	  end
 	end
 
