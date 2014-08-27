@@ -25,7 +25,7 @@
     <div class="attDiv">
       <div class="attribution">
 
-    <a href="http://gfycat.com/" class="att"> via Gfycat.com</a>
+    <%= link_to "Posted by #{@goal.user.username}", user_url(@goal.user) %><a href="http://gfycat.com/" class="att"> via Gfycat.com</a>
       </div>
 
 
