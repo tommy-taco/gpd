@@ -18,4 +18,14 @@
 	  Download:
 	  <%= link_to "CSV", goals_path(format: "csv") %>
 	</p>
+
+	<p> Users</p>
+
+	<ul>
+		<% @users.each do |a| %>
+
+		<li><%= a.username %> <%= a.id %></li>
+
+		<% end %>
+	</ul>
 </div>

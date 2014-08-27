@@ -19,6 +19,7 @@ class StaticsController < ApplicationController
   end
   
   def upload
+    @users = User.all
   end
 
   def check
