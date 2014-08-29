@@ -47,6 +47,13 @@
     <% if @goal.date != nil %><li class="list-group-item"><strong>Date:</strong> <%= @goal.date.to_s(:long) %></li><% end %>
     <% if @goal.stadium != nil %><li class="list-group-item"><strong>Stadium:</strong> <%= @goal.stadium %></li><% end %>
     <% if @goal.scored_with %><li class="list-group-item"><strong>Scored With:</strong> <%= @goal.scored_with %></li><% end %>
+    <li class="list-group-item"><a href="https://twitter.com/goalopedia" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @goalopedia</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+
+    
+
+
+
     <% if @goal.minute.nil? == true || @goal.stadium.nil? == true || @goal.scored_with.nil? == true || @goal.own_goal.nil? == true || @goal.home.nil? == true || @goal.free_kick.nil? == true || @goal.penalty.nil? == true %>
       <div class="showRow showEdit topMarg">
         <%= link_to "Add Goal Data", edit_goal_path(@goal), :class => 'btn btn-info' %>  
@@ -54,6 +61,7 @@
 
     <% end %>
   </ul>
+
 
 </div>
 
