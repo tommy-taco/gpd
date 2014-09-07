@@ -1,20 +1,42 @@
-<div class="center">
- 
-  <div class="jumbotron">
-    <h1>Welcome to Goalopedia! Discover Awesome Goals and Add Your Favorites</h1>
-  </div>
+<section class="featured">
+			<div class="container"> 
+				<div class="row mar-bot40">
+					<div class="col-md-10 col-md-offset-1">						
+						<div class="align-center">
+							<h1 class="slogan font-weight-Bold color-white">GOALOPEDIA</h1>
+							<p class="tagline">Discover awesome goals and add your favorites.</p>    <br />
+							<%= link_to "Sign Up", new_user_registration_path, class: "btn" %>
+						</div>
+					</div>                    
+				</div>
+                <div class="clear"></div>                
+			</div>
+		</section> 
+  
 
+  <section class="videocontainer bg-grey section">
+	    <div class="container-fluid position-relative">            
+	        <h1 class="text-center color-green txt-regular col-md-4 col-md-offset-4">Most Recent</h1>
+	        <!-- <div class="filterbox col-md-2 col-md-offset-2">
+	            <select class="filter">
+	                <option value="">Filter by</option>
+	                <option value="option1">Option1</option>
+	                <option value="option2">Option2</option>
+	                <option value="option3">Option3</option>
+	            </select>
+	        </div> -->
+	        <div class="clear mar-bot30"></div>
+	        <div id="goals" class="masonry clearfix">
+				<%= render @goals.order(:date).reverse_order %>
+			</div>
 
-	<div id="goals" class="masonry clearfix">
-		<%= render @goals.order(:date).reverse_order %>
+	<div class="clear mar-bot50"></div>
+         <div class="align-center paginator">
+
+  	<%= will_paginate @goals %>
+	</div>
 	</div>
 
-	<div class="paginator">
-  	<%= will_paginate @goals, renderer: BootstrapPagination::Rails %>
-	</div>
-	</div>
-
-</div>
 
 
 <% set_meta_tags :description => "Welcome to Goalopedia! Our mission is to document every goal caught on tape, help us make Goalopedia the best resource for goals possible!",
