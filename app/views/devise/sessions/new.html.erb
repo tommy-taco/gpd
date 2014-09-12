@@ -1,11 +1,14 @@
-<div class="jumbotron">
-  <h1><%= title "Login" %></h1>
-</div>
+<section class="videocontainer bg-grey page-section">
+    <div class="container position-relative">  
+
+  <h1 class="text-center color-green txt-regular align-center"><%= title "Login" %></h1>
 
 
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal form-user"}) do |f| %>
-                                                                                                                                        
+
+<div class="goal box form">
+                                                                                                                                
   
   <div class="form-group">
     <%= f.label :login, "Username or Email", class: "control-label col-md-4" %>
@@ -42,5 +45,9 @@
       <%= render "devise/shared/links" %>
     </div>
   </div>
+</div>
 
 <% end %>
+
+    </div>
+</section>

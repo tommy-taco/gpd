@@ -1,55 +1,112 @@
-<section id="header" class="appear"></section>
-    <div class="navbar navbar-fixed-top" role="navigation" data-0="line-height:100px; height:80px; background-color:rgba(108,191,99,1);" data-300="line-height:60px; height:60px; background-color:rgba(108,191,99,1);">
-       <div class="container overflow-visible">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Goalopedia" data-0="height:57px;" data-300="height:35px;"/></a></h1>
-                    <div id="main-nav">                        
-                    </div>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav sf-menu" data-0="margin-top:25px;" data-300="margin-top:12px;">
-            <li><a href="#">Clubs</a>
-                            <ul>
-                                <li><a href="#">Clubs 1</a></li>
-                                <li><a href="#">Clubs 2</a></li>
-                                <li><a href="#">Clubs 3</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">International</a>
-                             <ul>
-                                <li><a href="#">International 1</a></li>
-                                <li><a href="#">International 2</a></li>
-                                <li><a href="#">International 3</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Leagues and Cups</a>
-                            <ul>
-                                <li><a href="#">Leagues and Cups 1</a></li>
-                                <li><a href="#">Leagues and Cups 2</a></li>
-                                <li><a href="#">Leagues and Cups 3</a></li>
-                            </ul>
-                        </li>
-                        <li class="display-none login-wrap"><a href="#">Login / Signup</a></li>
-                        <li class="display-none">
-                        <div class="searchform" data-0="margin-top:-5px;" data-300="margin-top:5px;">
-                            <form id="Form1">
-                                <a href="#" class="submitbtn"></a>
-                                <input type="text" placeholder="Search" class="search" name="s" />
-                            </form>
-                        </div>
-                        </li>
-          </ul>
-                    <div class="float-right">
-                        <div class="searchform" data-0="margin-top:-5px;" data-300="margin-top:5px;">
-                            <form id="searchform">
-                                <a href="#" class="submitbtn"></a>
-                                <input type="text" placeholder="Search" class="search" name="s" />
-                            </form>
-                        </div>
-                        <div class="loginform" data-0="margin-top:-5px;" data-300="margin-top:5px;">
-                            <a href="#" class="loginbtn">Log in / Sign up</a>
-                        </div>
-                    </div>
-        </div><!--/.navbar-collapse -->
-      </div>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to(image_tag("logoNBG.png", :class => "navBrand", :alt => "Goalopedia"), root_path) %>
     </div>
+    
+
+    <div class="navbar-collapse collapse" id="navbar-collapsible">
+      
+
+
+
+      <ul class="nav navbar-nav pageNav">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">CLUBS<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Arsenal", team_path(109) %></li>
+              <li><%= link_to "Barcelona", team_path(423) %></li>
+              <li><%= link_to "Bayern Munich", team_path(242) %></li>
+              <li><%= link_to "Chelsea", team_path(115) %></li>
+              <li><%= link_to "Liverpool", team_path(125) %></li>
+              <li><%= link_to "Manchester City", team_path(127) %></li>
+              <li><%= link_to "Manchester United", team_path(110) %></li>
+              <li class="divider"></li>
+              <li><%= link_to "All Teams", club_teams_path %></li>
+            </ul>
+          </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">INTERNATIONAL<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Argentina", team_path(499) %></li>
+              <li><%= link_to "Brazil", team_path(518) %></li>
+              <li><%= link_to "Colombia", team_path(534) %></li>
+              <li><%= link_to "England", team_path(553) %></li>
+              <li><%= link_to "France", team_path(561) %></li>
+              <li><%= link_to "Germany", team_path(566) %></li>
+              <li><%= link_to "Mexico", team_path(613) %></li>
+              <li><%= link_to "Netherlands", team_path(623) %></li>
+              <li><%= link_to "Switzerland", team_path(672) %></li>
+              <li><%= link_to "United States", team_path(691) %></li>
+              <li class="divider"></li>
+              <li><%= link_to "All Teams", national_teams_path %></li>
+            </ul>
+          </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">LEAGUES AND CUPS<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Premier League", competition_path(8) %></li>
+              <li><%= link_to "La Liga", competition_path(4) %></li>
+              <li><%= link_to "Bundesliga", competition_path(2) %></li>
+              <li><%= link_to "World Cup", competition_path(16) %></li>
+              
+              <li class="divider"></li>
+              <li><%= link_to "All Leagues and Cups", competitions_path %></li>
+            </ul>
+          </li>
+      </ul>
+      <div class="menuButtons navbar-right">
+
+        <div class="searchform" data-0="margin-top:-5px;" data-300="margin-top:5px;">
+
+
+          <%= form_tag goals_path, method: :get, id: "searchform" do %>
+            <%= text_field_tag :query, params[:query], class: "search", placeholder: "Search For Goals" %>
+            <%= submit_tag "search", name: nil, class: "none" %>
+            <% end %>
+          </div>
+
+      <% if defined?(Devise) %>
+        <% if user_signed_in? %>
+          <div class="loginform" data-0="margin-top:-5px;" data-300="margin-top:5px;">
+            <%= link_to "Add Goals", new_goal_path, class: "loginbtn" %>
+        </div>
+
+          <div class="loginform" data-0="margin-top:-5px;" data-300="margin-top:5px;">
+            <%= link_to "Profile", user_url(current_user), class: "loginbtn accButton" %>
+            
+        </div>
+            
+
+
+
+
+
+
+
+
+
+        <% else %>
+          <div class="loginform" data-0="margin-top:-5px;" data-300="margin-top:5px;">
+            <%= link_to "Log in / Sign up", new_user_registration_path, class: "loginbtn" %>
+        </div>
+
+        <% end %>
+      <% end %>
+      
+
+      </div>
+      
+      
+    </div>
+
+    
+  </div>
+</nav>

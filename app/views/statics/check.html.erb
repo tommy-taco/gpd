@@ -1,19 +1,11 @@
-<div class="jumbotron">
-  <h1><%= title "check" %></h1>
-
-</div>
-
-<div class="textMargin">
+<section class="videocontainer bg-grey page-section">
+    <div class="container position-relative">
+	<h1 class="text-center color-green txt-regular align-center"><%= title "List" %></h1>
 
 
-<% @goals.each do |a| %>
-<% gfyid = a.gfy.to_s.gsub("http://gfycat.com/", "") %>
-<%= a.player %>
-<img src="http://thumbs.gfycat.com/<%= gfyid %>-thumb100.jpg">
 
 
-<% end %>
-</ul>
+
 
 
 <ul>
@@ -30,3 +22,4 @@
 
 
 </div>
+</section>

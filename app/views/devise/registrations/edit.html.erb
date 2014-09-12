@@ -1,9 +1,9 @@
-<div class="center">
+<section class="videocontainer bg-grey page-section">
+    <div class="container position-relative">   
 
-  <div class="jumbotron">
-    <h2><%= title "Edit Profile" %></h2>
-  </div>
+    <h1 class="text-center color-green txt-regular align-center"><%= title "Edit Profile" %></h1>
 
+<div class="goal box form edit">
 
 <h3>User Info</h3>
 
@@ -19,7 +19,7 @@
   <% end %>
 
   <div><%= f.label :team_id %><br />
-  <%= f.collection_select :team_id, Team.order(:name), :id, :name, selected: @user.team_id %>
+  <%= f.collection_select :team_id, Team.order(:name), :id, :name, selected: @user.team_id %></div>
 
 
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
@@ -28,7 +28,7 @@
   <div><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <div><%= f.label :current_password %> <i>(To confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %></div>
 
   <div><%= f.submit "Update", :class => 'btn btn-success topMarg' %></div>
@@ -42,4 +42,6 @@
 
 </div>
 
+    </div>
+</section>
 

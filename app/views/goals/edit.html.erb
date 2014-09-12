@@ -1,7 +1,8 @@
 <%- model_class = Goal -%>
-<div class="jumbotron">
-  <h1><%= title "Edit Goal" %></h1>
-</div>
+
+<section class="videocontainer bg-grey page-section">
+    <div class="container position-relative">
+	<h1 class="text-center color-green txt-regular align-center"><%= title "Edit Goal" %></h1>
 
 
 <% if @goal.gfy != blank? %>
@@ -15,7 +16,9 @@
 
 <% end %>
 
-<div class="textMargin">
 
 <%= render :partial => 'form' %>
-</div>
+
+
+    </div>
+</section>

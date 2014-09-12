@@ -23,16 +23,199 @@
 */
 
 
+/*Nav Bar*/
 
-/*Goal Page Updates*/
+.navbar {
+  background-color: rgb(108, 191, 99);
+  margin-bottom: 0px;
+  border: none;
+  border-radius: none;
+  min-height: 75px;
+}
+
+.navBrand {
+  max-height: 60px;
+
+}
+
+.none {
+  display: none;
+}
+
+.menuButtons {
+  margin-top: 15px;
+}
+
+.loginform {
+  margin-top: 5px;
+}
+
+.navbar-default .navbar-nav > li > a {
+color: #ffffff;
+font-size: 13px;
+}
+
+.dropdown-menu {
+  background: rgba(255,255,255,0.9);
+
+}
+
+.dropdown-menu > li > a:hover {
+  background: rgba(204,204,204,0.9);
+
+}
+
+.navbar .container {
+  overflow: visible;
+  margin-top: 7.5px;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background-color: transparent;
+
+}
+
+.pageNav {
+  margin-top: 10px;
+
+}
+
+.accButton {
+  margin-left: 10px;
+}
+
+.loginbtn:hover {
+  color: black;
+  background-color: #efefef;
+}
+
+
+/*form page css*/
+
+.goal.box.form {
+  min-width: 400px;
+  max-width: 600px;
+  font-size: 16px;
+  clear: both;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+}
+
+.goal .form-group {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+}
+
+.goal.box.form.edit div {
+  margin-bottom: 25px;
+}
+
+/*form*/
+
+.formDiv {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formDiv .radio {
+  display: inline;
+  margin-left: 40px;
+
+}
+
+.formDiv .col-lg-10 {
+width: 75%;
+}
+
+.formDiv .col-lg-2 {
+width: 25%;
+}
+
+.formDiv .help-inline {
+  display: list-item;
+  color: #F00;
+  margin-left: 10%;
+  margin-top: 2%;
+  margin-bottom: 0%;
+  font-weight: bold;
+}
+
+.formDiv .alert {
+  color: #F00;
+  margin-left: 10%;
+  margin-top: 2%;
+  margin-bottom: 0%;
+  font-weight: bold;
+}
+
+/*admin*/
+
+.adminBox {
+
+  clear: both;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  background: #FFFFFF;
+  -moz-box-shadow:    0px 2px 4px 0px rgba(0,0,0,0.21);
+  box-shadow:         0px 2px 4px 0px rgba(0,0,0,0.21);
+
+  margin-bottom: 15px;  
+}
+
+/*pagination*/
+
+.pagination .current {
+color: #6CBF63;
+background-color: #fff;
+border-color: #6CBF63;
+cursor: default;
+float: left;
+padding: 6px 12px;
+border: solid 1px;
+font-style: normal;
+
+}
+.pagination a {
+  position: relative;
+float: left;
+padding: 6px 12px;
+line-height: 1.42857143;
+text-decoration: none;
+color: #6CBF63;
+margin-left: -1px;
+}
+
+.previous_page {
+  float: left;
+padding: 6px 12px;
+
+}
 
 
 
-/*sf nav*/
+.next_page {
+  float: left;
+padding: 6px 12px;
 
+}
 
+.next_page.disabled {
+  color: #6CBF63;
+background-color: transparent;
+border: none;
+opacity: 0.4;
+}
 
-
+.previous_page.disabled {
+  color: #6CBF63;
+background-color: transparent;
+border: none;
+opacity: 0.4;
+}
 
 /*Additional Box CSS*/
 
@@ -53,6 +236,17 @@
 
 }
 
+.bigLogo {
+  max-width: 100%;
+height: auto;
+
+}
+
+.buttonRow {
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+}
 
 
 /*==========================================================================
@@ -405,7 +599,7 @@ section.section {
 }
 
 section.page-section {
-  margin: 120px 0 0px 0;
+  margin: 30px 0 0px 0;
 }
 
 .bg-white {
@@ -444,7 +638,7 @@ section.page-section {
 /*===========================
   --- Header & menu ----
 =========================== */
-.navbar {
+/*.navbar {
   line-height: 100px;
   height: 100px;
   background-color: rgba(108,191,99,1);
@@ -542,7 +736,7 @@ h1 a.navbar-brand {
 
 .navbar-collapse.in {
   margin-top: -5px !important;
-}
+}*/
 
 
 
@@ -551,14 +745,14 @@ h1 a.navbar-brand {
 =========================== */
 
 section.featured {
-  padding: 150px 0 100px;
+  padding: 80px 0 80px;
   color: #fdfdfd;
   background: url(topbase.jpg) no-repeat center center;
   background-size: cover;
   position:relative; 
   text-align:center;
-  margin-top: 50px;
-}
+/*  margin-top: 50px;
+*/}
 
 section.featuredcon {
   padding: 200px 0 60px;
@@ -594,7 +788,7 @@ section.featured a.btn
     font-weight:400;
     width:230px;
     color:#6CBF63;
-    border-radius:0;
+    border-radius:6px;
     line-height:150%;
   transition: all 0.5s;
     background: #ffffff; /* Old browsers */
@@ -1199,7 +1393,7 @@ a.socialIcon:hover, .socialHoverClass {
 /* ========================================
 Media queries
 ========================================= */
-@media (min-width: 959px) and (max-width: 1199px) {
+/*@media (min-width: 959px) and (max-width: 1199px) {
   .navbar-nav {
     margin-top: 20px;
   }
@@ -1296,7 +1490,7 @@ width: 137% !important;
 left: -60px !important;
 }
 
-}
+}*/
 
 
 /*--- Colors of the Website --- */
@@ -1466,7 +1660,8 @@ a.comsubmitbtn:hover
 
 div.searchform, div.loginform{
   float:left;
-  margin-left:15px;
+  margin-bottom: 10px;
+  
 }
 div.searchform input[type=text]{
   background:transparent;
@@ -1475,8 +1670,12 @@ div.searchform input[type=text]{
   line-height:25px;
   padding:3px 3px 3px 30px;
   color:#ffffff;
-  width: 190px;
+  width: 200px;
   transition:all 0.5s;
+  background: url("search.png") no-repeat;
+  background-position-x: 3%;
+  background-position-y: 50%;
+  margin-right: 10px;
 }
 a.submitbtn:before{
 content: "\f002";
@@ -1507,19 +1706,19 @@ a.loginbtn{
 font-size: 18px;
 color: #6CBF63;
 background:#ffffff;
-padding:5px 20px 5px 10px;
+padding:5px 10px 5px 10px;
 border-radius:5px;
 text-transform:uppercase;
 }
 
-a.loginbtn:after{
+/*a.loginbtn:after{
 content: "\f078";
 font-family: 'FontAwesome';
 color:#6CBF63;
 position:relative;
 left:10px;
 cursor:pointer;
-}
+}*/
 
 
 div.filterbox select.filter{
@@ -1568,7 +1767,7 @@ border-color: #6CBF63;
   cursor: not-allowed;
   
 }
-@media screen and (min-width: 960px) and (max-width: 1100px) {
+/*@media screen and (min-width: 960px) and (max-width: 1100px) {
 .navbar-brand img {
 vertical-align: middle;
 max-height: 40px;
@@ -1606,7 +1805,7 @@ padding: 0;
   width:100%;
 }
 }
-
+*/
 
 .slicknav_nav .searchform{
 margin-left: 0;

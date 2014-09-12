@@ -1,9 +1,12 @@
+
+<% if user_signed_in? == false  %>
+
 <section class="featured">
 			<div class="container"> 
 				<div class="row mar-bot40">
 					<div class="col-md-10 col-md-offset-1">						
 						<div class="align-center">
-							<h1 class="slogan font-weight-Bold color-white">GOALOPEDIA</h1>
+							<%= link_to(image_tag("logoNBG.png", :class => "bigLogo", :alt => "Goalopedia"), root_path) %>
 							<p class="tagline">Discover awesome goals and add your favorites.</p>    <br />
 							<%= link_to "Sign Up", new_user_registration_path, class: "btn" %>
 						</div>
@@ -12,11 +15,12 @@
                 <div class="clear"></div>                
 			</div>
 		</section> 
+  <% end %>
   
 
   <section class="videocontainer bg-grey section">
 	    <div class="container-fluid position-relative">            
-	        <h1 class="text-center color-green txt-regular col-md-4 col-md-offset-4">Most Recent</h1>
+	        <h1 class="text-center color-green txt-regular col-md-4 col-md-offset-4">Most Recent Goals</h1>
 	        <!-- <div class="filterbox col-md-2 col-md-offset-2">
 	            <select class="filter">
 	                <option value="">Filter by</option>
