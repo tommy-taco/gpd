@@ -1,14 +1,12 @@
-<div class="compBox box">
-
-	<% gfyid = team.goals_scored.last.gfy.to_s.gsub("http://gfycat.com/", "") %>
-
-		<h2>
-			<%= link_to team do %>
+<div class="goal box">
+	<% gfyid = team.goals_scored.last.gfy.to_s.gsub("http://gfycat.com/", "") %>       
+    <div class="gfySize">
+        <div class="gfyitem" data-title=false data-autoplay=false data-controls=false data-expand=false data-id="<%= gfyid %>"></div>
+    </div>
+    <h2>
+		<%= link_to team do %>
 				<%= team.name %> 
 			<% end %>
-		</h2>
-		<div class="gfySize">
-				<div class="gfyitem" data-title=false data-autoplay=false data-controls=false data-expand=false data-id="<%= gfyid %>"></div>
-		</div>
+	</h2>
+</div>
 
-	</div>

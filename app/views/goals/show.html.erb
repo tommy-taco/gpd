@@ -1,114 +1,54 @@
-<%- model_class = Goal -%>
 
-<% set_meta_tags :description => "#{@goal.player} scores a goal for #{@goal.team.name} in the #{@goal.competition.name} against #{@goal.opponent.name}. Watch this goal at Goalopedia and find more great goals.",
-                 :keywords => "#{@goal.player}, #{@goal.team.name}, #{@goal.competition.name}, #{@goal.opponent.name}, #{@goal.stadium}, #{@goal.scored_with}, #{@goal.assist}" %>
 
-<div class="jumbotron">
-
-  <h1>
-    <%= link_to @goal.next_goal do %>
+<section class="videocontainer bg-grey page-section">
+    <div class="container position-relative">            
+        <h1 class="text-center color-green txt-regular col-md-8 align-center">
+          <%= link_to @goal.next_goal do %>
       <i class="fa fa-arrow-left"></i>
     <% end %>
     <%= title "#{@goal.player} (#{@goal.team.name}) v. #{@goal.opponent.name}" %>
     <%= link_to @goal.previous_goal do %>
       <i class="fa fa-arrow-right"></i>
     <% end %>
-  </h1>
-</div>
+        </h1>                
+        <div class="clear mar-bot10"></div>
+        <article class="col-md-8">
+            <div id="goalPage">                
+            <div> 
+            <div class="goal box innerbox">            
+                    <div class="gfySize">
+                  <div class="gfyitem" data-title=false data-autoplay=true data-controls=false data-expand=false data-id="<%= @gfyid %>" style="width: 100%; height: auto;"></div> 
+                  </div>
+                    <h2 class="boxtitle"> 
+                      <%= link_to @goal.competition do %>
+                        <%= @goal.date.year %> <%= @goal.competition.name %>
+                      <% end %>
+                    </h2>
+                    <div class="width-50per float-left">
+                        <% if @goal.date != nil %><p><span class="color-green">Date: </span> <span class="color-grey"><%= @goal.date.to_s(:long) %></span></p><% end %>
+                        <% if @goal.assist != nil || @goal.assist.blank? != true %><p><span class="color-green">Assist: </span> <span class="color-grey"><%= @goal.assist %></span></p><% end %>
+                         <% if @goal.minute != nil %><p><span class="color-green">Minute: </span> <span class="color-grey">'<%= @goal.minute %></span></p><% end %>
+                         <% if @goal.minute.nil? == true || @goal.stadium.nil? == true || @goal.scored_with.nil? == true || @goal.own_goal.nil? == true || @goal.home.nil? == true || @goal.free_kick.nil? == true || @goal.penalty.nil? == true %><p><%= link_to "Add Goal Data", edit_goal_path(@goal), :class => '' %></span></p><% end %>
 
-<div class="showContent">
-
-<% if @goal.gfy = true %>
-<div class="gfyShow">
-  <div class="vidOut">
-  	<div class="gfyitem" data-title=false data-autoplay=true data-controls=false data-expand=false data-id="<%= @gfyid %>" %>"></div> 
-    <div class="attDiv">
-      <div class="attribution">
-
-    <%= link_to "Posted by #{@goal.user.username}", user_url(@goal.user) %><a href="http://gfycat.com/" class="att"> via Gfycat.com</a>
-      </div>
-
-
-    <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-related="goalopedia" data-hashtags="goalopedia">Tweet</a>
+                    </div>
+                    <div class="width-50per float-left">
+                        <% if @goal.stadium != nil %><p><span class="color-green">Stadium: </span> <span class="color-grey"><%= @goal.stadium %></span></p><% end %>
+                        <% if @goal.stage != nil %><p><span class="color-green">Stage: </span> <span class="color-grey"><%= @goal.stage %></span></p><% end %>
+                        <% if @goal.scored_with %><p><span class="color-green">Scored With: </span> <span class="color-grey"><%= @goal.scored_with %></span></p><% end %>
+                    </div>
+                    <div class="clear"></div>
+                    <hr />
+                    <div class="width-50per float-left">
+                        <p class="color-grey font-size12"><%= link_to "Posted by #{@goal.user.username}", user_url(@goal.user) %><a href="http://gfycat.com/" class="att"> via Gfycat.com</a></p>
+                    </div>
+                    <div class="width-50per float-right align-right">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-related="goalopedia" data-hashtags="goalopedia">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    <a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit1.gif" alt="submit to reddit" border="0" class="redditLink" /> </a>
-    </div>
-
-  </div>
-
-  <ul class="list-group">
-  
-    <li class="list-group-item active"><strong><% if @goal.date != nil %> <%= @goal.date.year %><% end %> <%= @goal.competition.name %></strong></li>
-
-    
-    <% if @goal.stage != nil %><li class="list-group-item"><strong>Stage:</strong> <%= @goal.stage %></li><% end %>
-    <% if @goal.assist != nil || @goal.assist.blank? != true %><li class="list-group-item"><strong>Assist:</strong> <%= @goal.assist %></li><% end %>
-    <% if @goal.minute != nil %><li class="list-group-item"><strong>Minute:</strong> '<%= @goal.minute %></li><% end %>
-    <% if @goal.date != nil %><li class="list-group-item"><strong>Date:</strong> <%= @goal.date.to_s(:long) %></li><% end %>
-    <% if @goal.stadium != nil %><li class="list-group-item"><strong>Stadium:</strong> <%= @goal.stadium %></li><% end %>
-    <% if @goal.scored_with %><li class="list-group-item"><strong>Scored With:</strong> <%= @goal.scored_with %></li><% end %>
-    <li class="list-group-item"><a href="https://twitter.com/goalopedia" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @goalopedia</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
-
-    
-
-
-
-    <% if @goal.minute.nil? == true || @goal.stadium.nil? == true || @goal.scored_with.nil? == true || @goal.own_goal.nil? == true || @goal.home.nil? == true || @goal.free_kick.nil? == true || @goal.penalty.nil? == true %>
-      <div class="showRow showEdit topMarg">
-        <%= link_to "Add Goal Data", edit_goal_path(@goal), :class => 'btn btn-info' %>  
-      </div>
-
-    <% end %>
-  </ul>
-
-
-</div>
-
-<% else %>
-
-<h3>Please add my Gfycat Link!</h3>
-
-<% end %>
-
-<div class="otherGoals">
-  <div class="panel panel-primary">
-    <div class="panel-heading"><%= link_to "More #{@goal.team.name} Goals", team_url(@goal.team) %> <i class="fa fa-arrow-right"></i></div>
-    <div class="panel-body">
-      <% @goal.team.goals_scored[0..3].each do |a| %>
-        <% gfyid = a.gfy.to_s.gsub("http://gfycat.com/", "") %>
-        <div class="goalThumb">
-          <%= link_to goal_url(a) do %>
-            <h5><%= a.player %> v. <%= a.opponent.name %></h5>
-          <% end %>
-          <%= link_to image_tag("http://thumbs.gfycat.com/#{gfyid}-thumb100.jpg"), goal_url(a) %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <% if @goal.opponent.goals_scored.count > 0 %>
-
-  <div class="panel panel-primary">
-    <div class="panel-heading"><%= link_to "More #{@goal.opponent.name} Goals", team_url(@goal.opponent) %> <i class="fa fa-arrow-right"></i></div>
-    <div class="panel-body">
-      <% @goal.opponent.goals_scored[0..3].each do |a| %>
-        <% gfyid = a.gfy.to_s.gsub("http://gfycat.com/", "") %>
-        <div class="goalThumb">
-          <%= link_to goal_url(a) do %>
-            <h5><%= a.player %> v. <%= a.opponent.name %></h5>
-          <% end %>
-          <%= link_to image_tag("http://thumbs.gfycat.com/#{gfyid}-thumb100.jpg"), goal_url(a) %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-<% end %>
-</div>
-
-
-<div class="form-group showRow">
+                    </div>
+              </div>
+            </div>
+            </div>
+<div class="col-md-8">
   <%= link_to "Incorrect info?", edit_goal_path(@goal), :class => '' %>
 <% if user_signed_in? && current_user.admin?  %>
     <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -121,10 +61,39 @@
 
   
 </div>
-
-</div>
-
-
-
-
-
+        </article>
+        <aside class="col-md-4 sidebar">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active" href="#liverpool" role="tab" data-toggle="tab"><%= link_to @goal.team.name, team_url(@goal.team) %></li>
+                <li href="#spurs" role="tab" data-toggle="tab"><%= link_to @goal.opponent.name, team_url(@goal.opponent) %></li>
+            </ul>
+            
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="liverpool">
+                  <% @goal.team.goals_scored[0..3].each do |a| %>
+                  <% gfyid = a.gfy.to_s.gsub("http://gfycat.com/", "") %>
+                    <div class="mar-bot15">
+                    <%= link_to goal_url(a) do %>
+                    <%= a.player %> v. <%= a.opponent.name %>
+                    <% end %>
+                    <%= link_to image_tag("http://thumbs.gfycat.com/#{gfyid}-thumb100.jpg"), goal_url(a) %>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="tab-pane" id="spurs">
+                  <% @goal.opponent.goals_scored[0..3].each do |a| %>
+                    <% gfyid = a.gfy.to_s.gsub("http://gfycat.com/", "") %>
+                    <div class="mar-bot15">
+                      <%= link_to goal_url(a) do %>
+                        <%= a.player %> v. <%= a.opponent.name %>
+                      <% end %>
+                      <%= link_to image_tag("http://thumbs.gfycat.com/#{gfyid}-thumb100.jpg"), goal_url(a) %>
+                    </div>
+                  <% end %>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>

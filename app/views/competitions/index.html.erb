@@ -1,17 +1,27 @@
-<div class="jumbotron">
-<h1>Find Your Favorite Cups and Leagues</h1>
-</div>
-<div id="goals" class="masonry clearfix">
 
-	<%= render @competitions.order(:id).reverse_order %>
-	<div class="compBox box">
-		<h2><%= link_to "Can't Find it? Add Your Favorite League", new_user_registration_path %></h2>
-		<div class="gfySize">
-				<div class="gfyitem" data-title=false data-autoplay=true data-controls=false data-expand=false data-id="HappyNecessaryBernesemountaindog"></div>
-		</div>
-
+<section class="videocontainer bg-grey section">
+	    <div class="container-fluid position-relative">            
+	        <h1 class="text-center color-green txt-regular col-md-4 col-md-offset-4">Find Your Favorite Cups and Leagues</h1>
+	        <!-- <div class="filterbox col-md-2 col-md-offset-2">
+	            <select class="filter">
+	                <option value="">Filter by</option>
+	                <option value="option1">Option1</option>
+	                <option value="option2">Option2</option>
+	                <option value="option3">Option3</option>
+	            </select>
+	        </div> -->
+	        <div class="clear mar-bot30"></div>
+	        <div id="goals" class="masonry clearfix">
+				<%= render @competitions.order(:id).reverse_order %>
+				<div class="goal box">
+	    <div class="gfySize">
+			<div class="gfyitem" data-title=false data-autoplay=true data-controls=false data-expand=false data-id="HappyNecessaryBernesemountaindog"></div>
+	    </div>
+	    <h2>
+			<%= link_to "Can't Find it? Add Your Favorite League", new_user_registration_path %>
+		</h2>
 	</div>
-
+			</div>
 </div>
 
 
