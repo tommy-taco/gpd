@@ -19,9 +19,39 @@
 @import "bootstrap";
 @import "font-awesome";
 
-/*Site CSS
+/*Social
 */
 
+.fb_iframe_widget {
+  display: inline-block;
+  position: relative;
+  float: right;
+  margin-top: -22px;
+}
+
+/*Goal Show*/
+
+.arrowButton {
+  font-size: 30px;
+  width: 5%;
+}
+
+.arrowButton.previous {
+  float: right;
+}
+
+.arrowButton.next {
+  float: left;
+}
+
+.goalHeader {
+  float: inherit;
+  width: 90%;
+}
+
+.teamButton {
+  margin-top: 15px;
+}
 
 /*Nav Bar*/
 

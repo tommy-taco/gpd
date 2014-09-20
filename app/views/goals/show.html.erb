@@ -1,16 +1,25 @@
 
 
 <section class="videocontainer bg-grey page-section">
-    <div class="container position-relative">            
-        <h1 class="text-center color-green txt-regular col-md-8 align-center">
-          <%= link_to @goal.next_goal do %>
-      <i class="fa fa-arrow-left"></i>
-    <% end %>
-    <%= title "#{@goal.player} (#{@goal.team.name}) v. #{@goal.opponent.name}" %>
-    <%= link_to @goal.previous_goal do %>
-      <i class="fa fa-arrow-right"></i>
-    <% end %>
-        </h1>                
+    <div class="container position-relative"> 
+        <div class="col-md-8 align-center txt-regular text-center">  
+          <div class="arrowButton next">
+            <%= link_to @goal.next_goal do %>
+              <i class="fa fa-arrow-left"></i>
+            <% end %>
+          </div>         
+          <h1 class="color-green goalHeader">
+            
+            <%= title "#{@goal.player} (#{@goal.team.name}) v. #{@goal.opponent.name}" %>
+            
+          </h1>
+          <div class="arrowButton previous">
+            <%= link_to @goal.previous_goal do %>
+              <i class="fa fa-arrow-right"></i>
+            <% end %>
+          </div>
+
+        </div>              
         <div class="clear mar-bot10"></div>
         <article class="col-md-8">
             <div id="goalPage">                
@@ -23,7 +32,10 @@
                       <%= link_to @goal.competition do %>
                         <%= @goal.date.year %> <%= @goal.competition.name %>
                       <% end %>
+
+                      <div class="fb-like" data-href="https://www.facebook.com/goalopedia" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                     </h2>
+
                     <div class="width-50per float-left">
                         <% if @goal.date != nil %><p><span class="color-green">Date: </span> <span class="color-grey"><%= @goal.date.to_s(:long) %></span></p><% end %>
                         <% if @goal.assist != nil || @goal.assist.blank? != true %><p><span class="color-green">Assist: </span> <span class="color-grey"><%= @goal.assist %></span></p><% end %>
@@ -80,6 +92,7 @@
                     <%= link_to image_tag("http://thumbs.gfycat.com/#{gfyid}-thumb100.jpg"), goal_url(a) %>
                     </div>
                   <% end %>
+                  <p class="teamButton color-green"><%= link_to "#{@goal.team.name} Team Page", team_url(@goal.team) %> &#8594;</p>
                 </div>
                 <div class="tab-pane" id="spurs">
                   <% @goal.opponent.goals_scored[0..3].each do |a| %>
@@ -89,6 +102,7 @@
                         <%= a.player %> v. <%= a.opponent.name %>
                       <% end %>
                       <%= link_to image_tag("http://thumbs.gfycat.com/#{gfyid}-thumb100.jpg"), goal_url(a) %>
+                      <p class="teamButton color-green"><%= link_to "#{@goal.opponent.name} Team Page", team_url(@goal.opponent) %> &#8594;</p>
                     </div>
                   <% end %>
                 </div>
@@ -96,3 +110,5 @@
         </aside>
     </div>
 </section>
+
+<% description "#{@goal.player} scores a goal against #{@goal.opponent.name} for #{@goal.team.name} in the #{@goal.competition.name}." %>
