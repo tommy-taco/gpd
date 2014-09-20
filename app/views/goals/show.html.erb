@@ -102,9 +102,10 @@
                         <%= a.player %> v. <%= a.opponent.name %>
                       <% end %>
                       <%= link_to image_tag("http://thumbs.gfycat.com/#{gfyid}-thumb100.jpg"), goal_url(a) %>
-                      <p class="teamButton color-green"><%= link_to "#{@goal.opponent.name} Team Page", team_url(@goal.opponent) %> &#8594;</p>
                     </div>
                   <% end %>
+                      <p class="teamButton color-green"><%= link_to "#{@goal.opponent.name} Team Page", team_url(@goal.opponent) %> &#8594;</p>
+
                 </div>
             </div>
         </aside>
