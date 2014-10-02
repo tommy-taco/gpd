@@ -29,7 +29,7 @@
 	<ul>
 		<% @users.each do |a| %>
 
-		<li><%= a.id %> | <%= a.username %> | <%= a.email %> | uploads: <%= a.goals.count %> </li>
+		<li><%= a.id %> | <%= a.username %> | <%= a.email %> | uploads: <%= a.goals.count %> | Created at: <%= a.created_at %> </li>
 
 		<% end %>
 	</ul>
