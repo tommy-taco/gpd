@@ -39,7 +39,7 @@
                     <div class="width-50per float-left">
                         <% if @goal.date != nil %><p><span class="color-green">Date: </span> <span class="color-grey"><%= @goal.date.to_s(:long) %></span></p><% end %>
                         <% if @goal.assist != nil || @goal.assist.blank? != true %><p><span class="color-green">Assist: </span> <span class="color-grey"><%= @goal.assist %></span></p><% end %>
-                         <% if @goal.minute != nil %><p><span class="color-green">Minute: </span> <span class="color-grey">'<%= @goal.minute %></span></p><% end %>
+                         <% if @goal.minute != nil %><p><span class="color-green">Minute: </span> <span class="color-grey"><%= @goal.minute %>'</span></p><% end %>
                          <% if @goal.minute.nil? == true || @goal.stadium.nil? == true || @goal.scored_with.nil? == true || @goal.own_goal.nil? == true || @goal.home.nil? == true || @goal.free_kick.nil? == true || @goal.penalty.nil? == true %><p><%= link_to "Add Goal Data", edit_goal_path(@goal), :class => '' %></span></p><% end %>
 
                     </div>
