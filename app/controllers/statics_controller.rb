@@ -1,5 +1,5 @@
 class StaticsController < ApplicationController
-  before_action :admin_user, only: [:upload, :check] 
+  before_action :admin_user, only: [:upload] 
 
   def index
     @user = current_user
