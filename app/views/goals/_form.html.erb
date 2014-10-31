@@ -5,7 +5,7 @@
   <%= f.association :team, collection: Team.order('name ASC') %>
   <%= f.association :opponent, collection: Team.order('name ASC') %>
   <%= f.association :competition, collection: Competition.order('name ASC') %>
-  <%= f.input :stage, as: :select, collection: ['League Game', 'Group Stage', 'Round of 16', 'Quarterfinals', 'Semi Finals', '3rd Place Match', 'Final', 'Other'] %>
+  <%= f.input :stage, as: :select, collection: ['League Game', 'Group Stage', 'Round of 16', 'Quarterfinals', 'Semi Finals', '3rd Place Match', 'Final', 'First Round', 'Second Round', 'Third Round', 'Fourth Round', 'Fifth Round', 'Other'] %>
   <%= f.input :assist, hint: "If there is a registered assist on the goal, list it here, otherwise leave blank." %>
   <%= f.input :date, order: [:day, :month, :year], end_year: Date.today.year - 90, start_year: Date.today.year %>
   <%= f.input :minute, range: 1..130 %>

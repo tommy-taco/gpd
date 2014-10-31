@@ -119,6 +119,10 @@ font-size: 13px;
   background-color: #efefef;
 }
 
+.navbar-toggle {
+  margin-right: 5px;
+}
+
 
 /*form page css*/
 
@@ -278,6 +282,15 @@ height: auto;
 
 }
 
+
+
+/*@media only screen and (min-device-width : 979px) and (max-device-width : 1024px)  {
+
+.col-md-4.box {
+  width: 30%;
+}
+}
+*/
 
 /*==========================================================================
   General
