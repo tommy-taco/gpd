@@ -7,5 +7,5 @@ $(function() {
 	$container.masonry({ itemSelector: '.box' });
 
 
-	}, 2500);
+	}, 3000);
 });
