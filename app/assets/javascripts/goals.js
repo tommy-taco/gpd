@@ -1,5 +1,5 @@
-$(function() {
-	var $container = $('#goals');
+$(window).load(function() {
+  var $container = $('#goals');
 
 	setTimeout(function() {
 
@@ -7,5 +7,5 @@ $(function() {
 	$container.masonry({ itemSelector: '.box' });
 
 
-	}, 3000);
+	}, 10);
 });
