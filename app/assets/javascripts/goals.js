@@ -1,7 +1,4 @@
-$(window).load(function() {
+$(document).ready(function() {
   var $container = $('#goals');
-$container.masonry({ itemSelector: '.box' });
-
-
-
+  $container.masonry({itemSelector: '.box'});
 });
