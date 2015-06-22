@@ -6,7 +6,7 @@ class StaticsController < ApplicationController
     if params[:query].present?
       @goals = Goal.search(params[:query])
     else
-      @goals = Goal.paginate(page: params[:page], :per_page => 24)
+      @goals = Goal.paginate(page: params[:page], :per_page => 12)
     end
   end
   
