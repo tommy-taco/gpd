@@ -6,7 +6,7 @@ class CompetitionsController < ApplicationController
   end
 
   def show
-    @goals = @competition.goals.paginate(page: params[:page], :per_page => 24)
+    @goals = @competition.goals.paginate(page: params[:page], :per_page => 18)
   end
 
   private
