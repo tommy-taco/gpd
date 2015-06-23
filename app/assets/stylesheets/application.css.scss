@@ -320,6 +320,14 @@ h1,h2,h3,h4,h5,h6 {
   font-style: normal;
   margin: 0 0 20px 0;
 }
+
+.goal h2 {
+  margin: 15px 0 5px 0;
+
+}
+
+
+
 h1 { font-size: 40px; line-height: 30px; }
 h2 { font-size: 32px; }
 h3 { font-size: 24px; }
@@ -1629,6 +1637,7 @@ a.scrollup{
   line-height: 27px;
   padding:10px;
   margin: 5px;
+  width: 100%;
   max-width: 440px;
   min-width: 300px;
   min-height: 250px;
@@ -1915,4 +1924,18 @@ li.display-none{display:none;}
 }
 .tab-pane{
   padding:15px;
+}
+
+.gfySize{
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+}
+
+.gfySize > div{
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
