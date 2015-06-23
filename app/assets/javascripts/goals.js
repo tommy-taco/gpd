@@ -1,6 +1,6 @@
 $(window).load(function() {
   var $container = $('#goals');
-$container.masonry({ itemSelector: '.box' });
+	$container.masonry({ itemSelector: '.box' });
 
 
 
