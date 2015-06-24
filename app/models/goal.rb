@@ -8,15 +8,10 @@ class Goal < ActiveRecord::Base
 	nilify_blanks :only => [:assist, :stadium, :scored_with, :date, :video, :gfy]
 
 
+	include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
-
-=begin
-  # TODO
-	include Tire::Model::Search
-	include Tire::Model::Callbacks
-
-
-	tire.settings :index => {
+	settings index: {
 		:analysis => {
 			:analyzer => {
 				:index_analyzer => {
@@ -29,38 +24,36 @@ class Goal < ActiveRecord::Base
 				}
 			}
 		}
-	}
-
-
-	mapping do
-		indexes :id, type: 'integer', index: :not_analyzed
-		indexes :gfy, index: :not_analyzed
-		indexes :minute, type: 'integer', index: :not_analyzed
-		indexes :player, boost: 5, analyzer: :index_analyzer
-		indexes :date, type: 'date', index: :not_analyzed
-		indexes :stadium, boost: 2, analyzer: :index_analyzer
-		indexes :assist, boost: 3, analyzer: :index_analyzer
-		indexes :stage, boost: 3, analyzer: :index_analyzer
-		# see json methods below, to search associations
-		indexes :team_id, type: 'integer'
-		indexes :team_name, boost: 4, analyzer: :index_analyzer
-		indexes :opponent_id, type: 'integer'
-		indexes :opponent_name, boost: 2, analyzer: :index_analyzer
-		indexes :competition_id, type: 'integer'
-		indexes :competition_name, boost: 3, analyzer: :index_analyzer
-
-	end
-=end
-
-
-	def self.search(params)
-
-  # TODO
-=begin
-		tire.search(page: params[:page], per_page: 12, load: true) do
-			query { string params[:query], default_operator: "AND" } if params[:query].present?
+	} do
+		mappings do
+			indexes :id, type: 'integer', index: :not_analyzed
+			indexes :gfy, index: :not_analyzed
+			indexes :minute, type: 'integer', index: :not_analyzed
+			indexes :player, boost: 5, analyzer: :index_analyzer
+			indexes :date, type: 'date', index: :not_analyzed
+			indexes :stadium, boost: 2, analyzer: :index_analyzer
+			indexes :assist, boost: 3, analyzer: :index_analyzer
+			indexes :stage, boost: 3, analyzer: :index_analyzer
+			indexes :team_id, type: 'integer'
+			indexes :team_name, boost: 4, analyzer: :index_analyzer
+			indexes :opponent_id, type: 'integer'
+			indexes :opponent_name, boost: 2, analyzer: :index_analyzer
+			indexes :competition_id, type: 'integer'
+			indexes :competition_name, boost: 3, analyzer: :index_analyzer
 		end
-=end
+	end
+
+	def self.search_wrapper(params)
+		response = Goal.__elasticsearch__.search(
+		{
+			query: {
+				query_string: {
+					query: params[:query], default_operator: 'AND'
+				}
+			}
+		}
+		).per(12).page(params[:page])
+		response.records
 	end
 
 	def to_indexed_json
