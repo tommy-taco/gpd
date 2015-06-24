@@ -10,8 +10,11 @@ class Goal < ActiveRecord::Base
 
 
 
+=begin
+  # TODO
 	include Tire::Model::Search
 	include Tire::Model::Callbacks
+
 
 	tire.settings :index => {
 		:analysis => {
@@ -47,12 +50,17 @@ class Goal < ActiveRecord::Base
 		indexes :competition_name, boost: 3, analyzer: :index_analyzer
 
 	end
+=end
 
 
 	def self.search(params)
+
+  # TODO
+=begin
 		tire.search(page: params[:page], per_page: 12, load: true) do
 			query { string params[:query], default_operator: "AND" } if params[:query].present?
 		end
+=end
 	end
 
 	def to_indexed_json

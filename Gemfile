@@ -56,9 +56,10 @@ gem 'meta-tags'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Tire for Elastic Search
-
-gem 'tire'
+# Elastic Search
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'bonsai-elasticsearch-rails'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
