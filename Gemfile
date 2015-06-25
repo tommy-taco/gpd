@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -55,9 +56,10 @@ gem 'meta-tags'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Tire for Elastic Search
-
-gem 'tire'
+# Elastic Search
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'bonsai-elasticsearch-rails'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

@@ -1,12 +1,12 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :create, :update, :new]
-  before_action :admin_user, only: [:destroy, :import]       
+  before_action :admin_user, only: [:destroy, :import]
 
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.search(params)
+    @goals = Goal.search_wrapper(params)
     @query = params[:query].to_s
     @csvgoals = Goal.all
     respond_to do |format|
@@ -14,7 +14,7 @@ class GoalsController < ApplicationController
       format.csv { render text: @csvgoals.to_csv }
     end
   end
-  
+
   #POST import
   def import
     if params[:file].blank?
