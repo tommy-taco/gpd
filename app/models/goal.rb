@@ -56,7 +56,7 @@ class Goal < ActiveRecord::Base
     response.records
   end
 
-  def as_indexed_json
+  def as_indexed_json(options={})
     as_json(methods: [:team_name, :opponent_name, :competition_name])
   end
 
