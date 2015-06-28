@@ -14,6 +14,10 @@ class Goal < ActiveRecord::Base
   settings index: {
     :analysis => {
       :analyzer => {
+        :default => {
+          :tokenizer => "whitespace",
+          :filter => ["asciifolding", "lowercase", "snowball"]
+        },
         :index_analyzer => {
           :tokenizer => "whitespace",
           :filter => ["asciifolding", "lowercase", "snowball"]
