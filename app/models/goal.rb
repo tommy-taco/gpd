@@ -44,6 +44,7 @@ class Goal < ActiveRecord::Base
       indexes :opponent_name, boost: 2, analyzer: :index_analyzer
       indexes :competition_id, type: 'integer'
       indexes :competition_name, boost: 3, analyzer: :index_analyzer
+      indexes :year, type: 'string', index: :not_analyzed
     end
   end
 
@@ -61,7 +62,11 @@ class Goal < ActiveRecord::Base
   end
 
   def as_indexed_json(options={})
-    as_json(methods: [:team_name, :opponent_name, :competition_name])
+    as_json(methods: [:team_name, :opponent_name, :competition_name, :year])
+  end
+
+  def year
+    date.year
   end
 
   def team_name
